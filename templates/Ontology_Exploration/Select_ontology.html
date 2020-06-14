@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask the question</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="../../static/css/Steps-Progressbar.css">
+    <link rel="stylesheet" href="../../static/css/styles.css">
+    <!--
+        <link rel="stylesheet" type="text/css" href="node_modules/sweetalert2/dist/sweetalert2.css">
+        <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    -->
+    <link rel="stylesheet" type="text/css" href="../../static/css/sweetalert2.css">
+
+</head>
+
+<body>
+<div id="app_1">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="background-color:rgb(62,153,237);">
+        <div class="container"><a class="navbar-brand" href="#" style="color:#ffffff;">SPARQL Translator</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                    class="navbar-toggler-icon"></span></button>
+            <div
+                    class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#"
+                                                                style="color:rgb(255,255,255);">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"
+                                                                style="color:rgb(255,255,255);">What is SPARQL
+                        translator</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown"
+                                            aria-expanded="false" href="#" style="color:rgb(255,255,255);">Contact</a>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First
+                            Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a
+                                class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                    </li>
+                </ul>
+                <span class="navbar-text actions"> </span></div>
+        </div>
+    </nav>
+</div>
+
+<br>
+<br>
+
+<div class="steps-progressbar">
+    <ul>
+        <li class="previous">Select Ontology</li>
+        <li class="previous">Ask Question</li>
+        <li class="active">Entity Extraction</li>
+        <li>Entity Matching</li>
+        <li>Query Building</li>
+    </ul>
+</div>
+
+<br>
+<br>
+
+<div class="container" id="app_3">
+    <form action="">
+        <div class="form-control">
+            <h5>Insert ontology IRI</h5>
+            <br>
+            <input type="url" class="form-control" id="link_iri_ontology" name="link_iri_ontology"
+                   placeholder="Ontology IRI">
+            <br>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+
+    <br>
+    <br>
+    <br>
+
+    <form action="{{ url_for('select_ontology') }}" method="post" enctype="multipart/form-data">
+        <div class="form-control">
+            <h5>Upload your ontology</h5>
+            <br>
+            <input type="file" class="form-control-file" id="file_ontology" name="file_ontology" value="select">
+            <!--
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="file_ontology" name="file_ontology">
+                    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                    <span class="input-group-text" id="">Upload</span>
+                </div>
+            </div>
+            -->
+            <br>
+        </div>
+
+        <br>
+
+        <button onclick="sweetalertclick()" type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+</div>
+
+<br>
+<br>
+
+
+<div class="btn-toolbar">
+    <div class="btn-group" role="group" style="position: absolute; right: 200px; bottom: 10px">
+        <button onclick="window.location.href = '{{ url_for('ask_question') }}'; " class="btn btn-primary"
+                type="button">Previous
+        </button>
+    </div>
+    <div class="btn-group" role="group" style="position: absolute; right: 100px; bottom: 10px">
+        <button onclick="window.location.href = '{{ url_for('ask_question') }}'; " class="btn btn-primary"
+                type="button">Next
+        </button>
+    </div>
+</div>
+
+
+<!--
+                        SCRIPTS FOR JAVASCRIPT AND VUE JS
+
+-->
+
+<script>
+    function sweetalertclick() {
+        Swal.fire('Ontology selected successfully')
+    }
+
+    function sleep(milliseconds) {
+        const date = Date.now();
+        let currentDate = null;
+        do {
+            currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
+    }
+</script>
+
+
+<script src="../../static/js/sweetalert2.all.js"></script>
+<script src="../../static/js/sweetalert2.js"></script>
+
+
+<script>
+
+    new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#app_3',
+        data: {
+            isSeen: false
+        },
+        methods: {
+            success_alert: function (event) {
+                alert('Ontology file correctly selected')
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            }
+        }
+    });
+
+</script>
+
+
+</body>
+
+</html>

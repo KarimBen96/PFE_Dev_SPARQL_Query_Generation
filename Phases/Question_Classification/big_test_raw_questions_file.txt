@@ -1,0 +1,80 @@
+ENTY:termeq Aspartame is also known as what ?
+LOC:other Where is the location of the Orange Bowl ?
+NUM:date When is President Nixon's birthday ?
+DESC:desc What is the origin of the midwest slang , ' you 're darn tootin ' ?
+HUM:ind Whose cupboard was bare ?
+LOC:other What are the seven seas ?
+ABBR:exp What does IBM stand for ?
+DESC:desc What is the difference between jazz and blues ?
+DESC:def What is the C programming language ?
+HUM:ind What's the name of Popeye's adopted son ?
+HUM:ind Who invented the vacuum cleaner ?
+DESC:def What is a ' borrow pit ' ?
+HUM:ind What 2th-century fictional character attends Pencey Prep School ?
+NUM:count How many people in the USA say their number one source of information is the newspaper ?
+HUM:ind Who does Shakespeare's Antonio borrow 3 , 0 ducats from ?
+LOC:country Which country is known as '' Big Bear '' ?
+ENTY:food What '' melts in your mouth , not in your hands '' .
+NUM:count How many times a day should you take a prescription marked '' q.i.d . '' ?
+DESC:desc What is the origin of the atom ?
+HUM:ind Who is the Voyager project manager ?
+HUM:gr Which radio stations air the Jim Bohannon Radio Talk Show ?
+HUM:ind What two commanders directed the forces in the Battle of El Alamein ?
+HUM:ind Name the creator of '' The Muppets '' .
+DESC:manner How do I e-mail someone at aol.com from yahoo.com ?
+HUM:ind Who replies '' I know '' to Princess Leia's confession '' I love you '' in The Empire Strikes Back ?
+DESC:def What is the meaning of the name Ella ?
+LOC:other What's the home of the Rockettes ?
+LOC:other Where can I find all the information I need to know about the English Civil War , 1642-1649 , ?
+HUM:gr What is the name of the firm that makes Spumante ?
+ENTY:sport What sport is played on the largest field ?
+HUM:ind Who won the 1967 Academy Award for Best Actor ?
+ENTY:other What is after death ?
+HUM:ind Name the first private citizen to fly in space .
+HUM:ind What was football star Elroy Hirsch's nickname ?
+HUM:ind What singer sings '' Oh Boy '' ?
+NUM:count How much pizza do Americans eat in a day ?
+LOC:other What is the website for the USA journal ?
+HUM:gr What army's motto is Blood and Fire ?
+ENTY:other What kind of patent did Ermal Fraze get in 1963 ?
+DESC:desc What are you hearing when you put a seashell to your ear ?
+DESC:reason Why are haunted houses popular ?
+ENTY:other Which gender has bigger thighs ?
+LOC:state What U.S. state has the second-longest coastline ?
+LOC:state What state's home to the Buffalo Bill Historical Center ?
+NUM:speed How fast do cheetahs run ?
+ENTY:other What is Ray Bradbury's illustrated man illustrated with ?
+NUM:speed How fast is a 45Mhz processor ?
+ENTY:other What kind of puzzle first appeared in the U.S. in the New York World on December 21 , 1913 ?
+HUM:ind What count did Alexandre Dumas write about ?
+NUM:perc What are the odds of giving birth to twins ?
+LOC:other What is the largest natural lake in Pennsylvania ?
+NUM:dist How far is London UK from California ?
+ENTY:animal Name the two mystical ravens Odin has at his command .
+ENTY:animal What was the species of Winnie the Pooh ?
+DESC:def What is the virus HIV ?
+NUM:count How many years old is Benny Carter ?
+ENTY:cremat What Hermann Hesse book gave its name to a rock group ?
+LOC:other Where does the Santa Fe Trail begin and end ?
+ENTY:cremat What book is the follow-up to Future Shock ?
+ENTY:animal What African animals are known as The Big Five ?
+ENTY:letter What is the alphabet for Latin ?
+ENTY:dismed What is the fear of frogs ?
+LOC:city Which city in Canada is the least-populated ?
+NUM:period How old is Stevie Wonder ?
+HUM:ind Who was the first Taiwanese President ?
+HUM:ind Who is Luke Skywalker's father ?
+ENTY:other What does a dipsomaniac crave ?
+DESC:def What is the definition of the term '' weapons system '' ?
+DESC:desc What are Christopher Marlowe's and Shakespeare's literary contributions to English literature ?
+ENTY:food What is Nero Wolfe's favorite drink during office hours ?
+HUM:gr What is the first personal computer company ?
+ENTY:techmeth What is the most efficient way to start a barbeque ?
+HUM:desc Who was Jane Goodall ?
+DESC:reason Why are there Braille things on the ATM machines that people drive through ?
+LOC:other Where is the Isle of Man ?
+ENTY:cremat What book did Aaron Hass write ?
+NUM:other What was the death toll at the eruption of Mount Pinatubo ?
+NUM:date When will the millennium officially begin ?
+HUM:ind Who created the comic strip , '' Garfield '' ?
+HUM:ind Which Vietnamese terrorist is now a UN delegate in Doonesbury ?

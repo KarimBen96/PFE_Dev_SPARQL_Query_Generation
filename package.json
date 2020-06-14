@@ -1,0 +1,7 @@
+{
+  "name": "Flask_Vue_Tests",
+  "version": "1.0.0",
+  "dependencies": {
+    "sweetalert2": "^9.14.0"
+  }
+}

@@ -1,0 +1,77 @@
+Question|WH|WH-Bigram|WH-POS|WH-NBOR-POS|Root-POS|Class
+Aspartame is also known as what ?|what|what ?|WP|.|VBN|ENTY
+Where is the location of the Orange Bowl ?|Where|Where is|WRB|VBZ|VBZ|LOC
+When is President Nixon's birthday ?|When|When is|WRB|VBZ|VBZ|NUM
+What is the origin of the midwest slang , ' you 're darn tootin ' ?|What|What is|WP|VBZ|VBP|DESC
+What are the seven seas ?|What|What are|WP|VBP|VBP|LOC
+What does IBM stand for ?|What|What does|WP|VBZ|VB|ABBR
+What is the difference between jazz and blues ?|What|What is|WP|VBZ|VBZ|DESC
+What is the C programming language ?|What|What is|WP|VBZ|VBZ|DESC
+What's the name of Popeye's adopted son ?|What|What 's|WP|VBZ|VBZ|HUM
+Who invented the vacuum cleaner ?|Who|Who invented|WP|VBD|VBD|HUM
+What is a ' borrow pit ' ?|What|What is|WP|VBZ|VBZ|DESC
+What 2th-century fictional character attends Pencey Prep School ?|What|What 2th|WDT|JJ|VBZ|HUM
+How many people in the USA say their number one source of information is the newspaper ?|How|How many|WRB|JJ|VBP|NUM
+Who does Shakespeare's Antonio borrow 3 , 0 ducats from ?|Who|Who does|WP|VBZ|VBP|HUM
+Which country is known as '' Big Bear '' ?|Which|Which country|WDT|NN|VBN|LOC
+What '' melts in your mouth , not in your hands '' .|What|What ''|WP|''|VBZ|ENTY
+How many times a day should you take a prescription marked '' q.i.d . '' ?|How|How many|WRB|JJ|VB|NUM
+What is the origin of the atom ?|What|What is|WP|VBZ|VBZ|DESC
+Who is the Voyager project manager ?|Who|Who is|WP|VBZ|VBZ|HUM
+Which radio stations air the Jim Bohannon Radio Talk Show ?|Which|Which radio|WDT|NN|VBP|HUM
+What two commanders directed the forces in the Battle of El Alamein ?|What|What two|WP|CD|VBD|HUM
+How do I e-mail someone at aol.com from yahoo.com ?|How|How do|WRB|VBP|NN|DESC
+Who replies '' I know '' to Princess Leia's confession '' I love you '' in The Empire Strikes Back ?|Who|Who replies|WP|VBZ|VBZ|HUM
+What is the meaning of the name Ella ?|What|What is|WP|VBZ|VBZ|DESC
+What's the home of the Rockettes ?|What|What 's|WP|VBZ|VBZ|LOC
+Where can I find all the information I need to know about the English Civil War , 1642-1649 , ?|Where|Where can|WRB|MD|VB|LOC
+What is the name of the firm that makes Spumante ?|that|What is that makes|WDT|VBZ|VBZ|HUM
+What sport is played on the largest field ?|What|What sport|WDT|NN|VBN|ENTY
+Who won the 1967 Academy Award for Best Actor ?|Who|Who won|WP|VBD|VBD|HUM
+What is after death ?|What|What is|WP|VBZ|VBZ|ENTY
+What was football star Elroy Hirsch's nickname ?|What|What was|WP|VBD|VBD|HUM
+What singer sings '' Oh Boy '' ?|What|What singer|WDT|NN|VBZ|HUM
+How much pizza do Americans eat in a day ?|How|How much|WRB|JJ|VB|NUM
+What is the website for the USA journal ?|What|What is|WP|VBZ|VBZ|LOC
+What army's motto is Blood and Fire ?|What|What army|WP|NN|VBZ|HUM
+What kind of patent did Ermal Fraze get in 1963 ?|What|What kind|WDT|NN|VBP|ENTY
+What are you hearing when you put a seashell to your ear ?|when|What are when you|WRB|PRP|VBG|DESC
+Why are haunted houses popular ?|Why|Why are|WRB|VBP|JJ|DESC
+Which gender has bigger thighs ?|Which|Which gender|WDT|NN|VBZ|ENTY
+What U.S. state has the second-longest coastline ?|What|What U.S.|WP|NNP|VBZ|LOC
+What state's home to the Buffalo Bill Historical Center ?|What|What state|WDT|NN|NN|LOC
+How fast do cheetahs run ?|How|How fast|WRB|RB|VB|NUM
+What is Ray Bradbury's illustrated man illustrated with ?|What|What is|WP|VBZ|VBZ|ENTY
+How fast is a 45Mhz processor ?|How|How fast|WRB|JJ|VBZ|NUM
+What kind of puzzle first appeared in the U.S. in the New York World on December 21 , 1913 ?|What|What kind|WDT|NN|VBD|ENTY
+What count did Alexandre Dumas write about ?|What|What count|WP|NN|VB|HUM
+What are the odds of giving birth to twins ?|What|What are|WP|VBP|VBP|NUM
+What is the largest natural lake in Pennsylvania ?|What|What is|WP|VBZ|VBZ|LOC
+How far is London UK from California ?|How|How far|WRB|RB|VBZ|NUM
+What was the species of Winnie the Pooh ?|What|What was|WP|VBD|VBD|ENTY
+What is the virus HIV ?|What|What is|WP|VBZ|VBZ|DESC
+How many years old is Benny Carter ?|How|How many|WRB|JJ|VBZ|NUM
+What Hermann Hesse book gave its name to a rock group ?|What|What Hermann|WP|NNP|VBD|ENTY
+Where does the Santa Fe Trail begin and end ?|Where|Where does|WRB|VBZ|VB|LOC
+What book is the follow-up to Future Shock ?|What|What book|WDT|NN|VBZ|ENTY
+What African animals are known as The Big Five ?|What|What African|WDT|JJ|VBN|ENTY
+What is the alphabet for Latin ?|What|What is|WP|VBZ|VBZ|ENTY
+What is the fear of frogs ?|What|What is|WP|VBZ|VBZ|ENTY
+Which city in Canada is the least-populated ?|Which|Which city|WDT|NN|VBZ|LOC
+How old is Stevie Wonder ?|How|How old|WRB|JJ|VBZ|NUM
+Who was the first Taiwanese President ?|Who|Who was|WP|VBD|VBD|HUM
+Who is Luke Skywalker's father ?|Who|Who is|WP|VBZ|VBZ|HUM
+What does a dipsomaniac crave ?|What|What does|WP|VBZ|VB|ENTY
+What is the definition of the term '' weapons system '' ?|What|What is|WP|VBZ|VBZ|DESC
+What are Christopher Marlowe's and Shakespeare's literary contributions to English literature ?|What|What are|WP|VBP|VBP|DESC
+What is Nero Wolfe's favorite drink during office hours ?|What|What is|WP|VBZ|VBZ|ENTY
+What is the first personal computer company ?|What|What is|WP|VBZ|VBZ|HUM
+What is the most efficient way to start a barbeque ?|What|What is|WP|VBZ|VBZ|ENTY
+Who was Jane Goodall ?|Who|Who was|WP|VBD|VBD|HUM
+Why are there Braille things on the ATM machines that people drive through ?|that|Why are that people|WDT|NNS|VBP|DESC
+Where is the Isle of Man ?|Where|Where is|WRB|VBZ|VBZ|LOC
+What book did Aaron Hass write ?|What|What book|WDT|NN|VB|ENTY
+What was the death toll at the eruption of Mount Pinatubo ?|What|What was|WP|VBD|VBD|NUM
+When will the millennium officially begin ?|When|When will|WRB|MD|VB|NUM
+Who created the comic strip , '' Garfield '' ?|Who|Who created|WP|VBD|VBD|HUM
+Which Vietnamese terrorist is now a UN delegate in Doonesbury ?|Which|Which Vietnamese|WDT|JJ|VBZ|HUM

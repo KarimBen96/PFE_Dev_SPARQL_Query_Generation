@@ -1,0 +1,18 @@
+- Tous les (div) auront app_ + un numéro au fur et à mesure
+- Pour les autres : type de balise + nom significatif (exemple : input_question)
+
+-------------------
+
+mettre en debug mode : 
+- terminal + pthon
+- FLASK_DEBUG=1
+- flask configurations on pycharm 
+- cocher Flask Debug + apply
+
+----------------
+
+installer npm et ce qui va avec comme : npm install pretty-checkbox
+
+----------------
+
+installer sweetalert2

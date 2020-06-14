@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question key terms extraction</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="../../static/css/Steps-Progressbar.css">
+    <link rel="stylesheet" href="../../static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/pretty-checkbox.min.css">
+
+</head>
+
+<body>
+<div>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="background-color:rgb(62,153,237);">
+        <div class="container"><a class="navbar-brand" href="#" style="color:#ffffff;">SPARQL Translator</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                    class="navbar-toggler-icon"></span></button>
+            <div
+                    class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#"
+                                                                style="color:rgb(255,255,255);">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"
+                                                                style="color:rgb(255,255,255);">What is SPARQL
+                        translator</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown"
+                                            aria-expanded="false" href="#" style="color:rgb(255,255,255);">Contact</a>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First
+                            Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a
+                                class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                    </li>
+                </ul>
+                <span class="navbar-text actions"> </span></div>
+        </div>
+    </nav>
+</div>
+
+<br>
+
+<div class="steps-progressbar">
+    <ul>
+        <li class="previous">Select Ontology</li>
+        <li class="previous">Ask Question</li>
+        <li class="active">Entity Extraction</li>
+        <li>Entity Matching</li>
+        <li>Query Building</li>
+    </ul>
+</div>
+
+<br>
+<br>
+
+<div class="container" id="app_2">
+    <div class="">
+        <!--
+        <input class="form-control" type="text" placeholder="{{ question }}" disabled>
+        -->
+        <h6>{{ question }}</h6>
+        {% for item in list_question_lemma %}
+            <span class="badge badge-secondary"><h6>{{ item }}</h6></span>
+        {% endfor %}
+    </div>
+</div>
+
+<br>
+<br>
+
+<div class="container" id="app_3">
+    <div class="row">
+
+        <div class="col-md-3">
+            <h6>Key terms of the question</h6>
+            <br>
+            <ul class="list-group">
+                {% for item in list_question_lemma %}
+                    <!--
+                    <li class="list-group-item {{ 'active' if item in list_question_lemma }}">
+                    -->
+                    <li class="list-group-item {% if item in list_question_key_terms %} active {% endif %}">
+                        {{ item }}
+                    </li>
+                {% endfor %}
+                <!--
+                <li class="list-group-item" v-for="item in some_word" :key="item">
+                    [[ item ]]
+                </li>
+                -->
+            </ul>
+        </div>
+
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-3">
+            <br>
+            <br>
+            <br>
+            <h6>If this does not seem correct, you can change it manually</h6>
+            <button type="button" class="btn btn-warning" v-on:click="isSeen = true">Change the class</button>
+        </div>
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-3 list-group">
+            <h6>User's key terms of the question</h6>
+            <br>
+            <!--
+            <form action="{{ url_for('question_key_terms_extraction') }}" method="post">
+                {% for item in list_question_lemma %}
+                    <a href="#" class="list-group-item list-group-item-action">{{ item }}</a>
+                {% endfor %}
+
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        -->
+            <form action="{{ url_for('question_key_terms_extraction') }}" method="post">
+                {% for item in list_question_lemma %}
+                    <div class="pretty p-default p-fill">
+                        <input id="checkbox_terms" name="checkbox_terms" type="checkbox" value="{{ item }}"/>
+                        <div class="state p-primary">
+                            <label>{{ item }}</label>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                {% endfor %}
+                <br>
+                <button type="submit" class="btn btn-primary" style="position: absolute; right: 200px">Submit</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+<!--
+
+                            SCRIPTS FOR JAVASCRIPT AND VUE JS
+
+-->
+
+<script>
+
+    var question = '{{ question }}';
+    // var question_terms = {{ list_question_terms }};
+    // var question_key_terms = {{ list_question_key_terms }};
+
+
+    new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#app_3',
+        data: {
+            some_word: question,
+            // some_word_1: question_terms,
+            // some_word_2: question_key_terms
+            isSeen: false
+        }
+    });
+
+</script>
+
+</body>
+
+</html>
