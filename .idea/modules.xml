@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Flask_Vue_Tests.iml" filepath="$PROJECT_DIR$/.idea/Flask_Vue_Tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PFE_Dev_SPARQL_Query_Generation.iml" filepath="$PROJECT_DIR$/.idea/PFE_Dev_SPARQL_Query_Generation.iml" />
     </modules>
   </component>
 </project>

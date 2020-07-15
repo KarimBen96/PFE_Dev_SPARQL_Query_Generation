@@ -30,14 +30,14 @@ type_object_prop = "Object_Property"
 type_data_prop = "Data_Property"
 type_annotation_prop = "Annotation"
 
-# file_name_class = "./Ontology_Stuff/Classes.csv"
-file_name_class = "./Ontology_Elements_Files/Ontology_HERO/Classes.csv"
-# file_name_object_prop = "./Ontology_Stuff/ObjectProperties.csv"
-file_name_object_prop = "./Ontology_Elements_Files/Ontology_HERO/ObjectProperties.csv"
-# file_name_data_prop = "./Ontology_Stuff/DataProperties.csv"
-file_name_data_prop = "./Ontology_Elements_Files/Ontology_HERO/DataProperties.csv"
-# file_name_annotation_prop = "./Ontology_Stuff/AnnotationsProperties.csv"
-file_name_annotation_prop = "./Ontology_Elements_Files/Ontology_HERO/AnnotationsProperties.csv"
+file_name_class = "Ontology_Elements_Files/Ontology_HERO/Classes.csv"
+
+file_name_object_prop = "Ontology_Elements_Files/Ontology_HERO/ObjectProperties.csv"
+
+file_name_data_prop = "Ontology_Elements_Files/Ontology_HERO/DataProperties.csv"
+
+file_name_annotation_prop = "Ontology_Elements_Files/Ontology_HERO/AnnotationsProperties.csv"
+
 
 list_class = []
 list_object_prop = []
@@ -50,6 +50,8 @@ list_data_prepro = []
 list_object_prepro = []
 list_annotation_prepro = []
 
+
+all_lists = []
 
 #
 #               Some Pre-processing before the functions
@@ -88,6 +90,11 @@ def init_onto_for_mapping():
     for i in list_annotation_prop[:]:
         list_annotation_prepro.append(sep_str_onto_elem(i['name']))
 
+    global  all_lists
+    all_lists = (list_class, list_object_prop, list_data_prop, list_annotation_prop)
+
+
+
 
 #
 #               The Functions
@@ -109,8 +116,7 @@ def onto_type_file_to_dict(file_name, type_prop):
     dict_tempo = {"name": "", "IRI": "", "type": ""}
     onto_elem_type = type_prop
 
-    with open(file_name) as f:
-        f = open(file_name, "r")
+    with open(file_name, "r") as f:
         lines = f.readlines()
         for l in lines:
             dict_tempo = {"name": "", "IRI": "", "type": ""}
@@ -226,6 +232,27 @@ def rate_list_compare(list_1, list_2, nlp=nlp):
     rate = rate / l
 
     return rate
+
+
+def get_onto_elem_necessary(question_terms, all_lists_=None):
+    """
+
+    """
+
+    if all_lists_ is None:
+        all_lists_ = all_lists
+    list_onto_elem_necessary = []  # a list of dictionaries (like the ontology ones)
+
+    for list_ in all_lists_[:]:
+        for item in list_[1:]:
+            if rate_list_compare(question_terms, lemmatize_list(sep_str_onto_elem(item['name']))) > 0:
+                list_onto_elem_necessary.append(item)
+
+    list_onto_elem_necessary_names = []
+    for i in list_onto_elem_necessary:
+        list_onto_elem_necessary_names.append(sep_str_onto_elem(i['name']))
+
+    return list_onto_elem_necessary, list_onto_elem_necessary_names
 
 
 def get_onto_elem_for_mapping(list_ngrams_, onto_elem_necessary_):

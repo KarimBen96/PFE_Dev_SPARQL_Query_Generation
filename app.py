@@ -3,8 +3,8 @@ from werkzeug.utils import secure_filename
 
 from Phases.Question_Classification.Question_Classifiaction import classer_question
 from Phases.Question_Linguistic_Treatments import Question_Linguistic_Treatments as qlt
-# from Phases.Mapping import Mapping as mapping
-from Phases.mapping import mapping as mapping
+from Phases.Mapping import Mapping as mapping
+
 
 import os
 import secrets
@@ -45,6 +45,9 @@ current_mapping = []
 list_stop_words = qlt.light_list_stop_words
 
 
+
+
+
 #               Ontology Selection
 
 
@@ -62,6 +65,9 @@ def select_ontology():
     # return render_template("Select_ontology.html", see_alert=see_alert)
     return redirect(url_for('ask_question'))
     # return render_template("file_up_successfull.html", file=filename)
+
+
+
 
 
 #               Asking the Question and Terms Extraction
@@ -133,23 +139,149 @@ def question_key_terms_extraction():
     return redirect(url_for("show_mapping_result"))
 
 
+
+
+
 #               Mapping
+
+
+def build_user_mapping(our_select, onto_terms):
+    """
+
+    """
+
+    out_user_mapping = []
+
+    for item_1 in our_select:
+        dict_ = {}
+        if item_1 != 'None':
+            a, b = tuple(item_1.split('---'))
+
+            if b != 'None':
+                dict_['question_ngram'] = [a]
+
+                for item_2 in onto_terms:
+                    for i in item_2:
+                        if i['name'] == b:
+                            dict_['onto_elem'] = i
+                            out_user_mapping.append(dict_)
+
+    return out_user_mapping
+
+
 
 
 @app.route('/show_mapping_result', methods=['GET', 'POST'])
 def show_mapping_result():
 
+    """
+    current_question_terms = ['bachelor', 'degree']
+
+    mapping.init_onto_for_mapping()
+
     current_onto_elem_necessary, lol74 = mapping.get_onto_elem_necessary(current_question_terms)
+
     current_mapping = mapping.mapping_definition(current_question_terms, current_onto_elem_necessary)
+    for i in current_mapping:
+        print(current_mapping)
+        print("\n")
+
+    # simple_current_mapping = [current_mapping[0]['question_ngram'], current_mapping[0]['onto_elem']]
+    # print(simple_current_mapping)
+
+    """
+
+    onto_terms = [[{'name': 'Degree', 'IRI': 'http://www.UniversityReferenceOntology.og/HERO#Degree', 'type': 'Class'},
+                  {'name': 'MasterDegree', 'IRI': 'http://www.UniversityReferenceOntology.og/HERO#MasterDegree',
+                   'type': 'Class'}],
+                  [{'name': 'Bachelor', 'IRI': 'http://www.UniversityReferenceOntology.og/HERO#Bachelor',
+                    'type': 'Class'},
+                  {'name': 'BachelorDiploma', 'IRI': 'http://www.UniversityReferenceOntology.og/HERO#BachelorDiploma',
+                   'type': 'Class'}]]
+
+
+    simple_onto_terms = [['Degree', 'MasterDegree'],
+                        ['Bachelor', 'BachelorDiploma']]
+
+
+
+
+    current_mapping = [{'question_ngram': ['degree'],
+                        'onto_elem': {'name': 'Degree', 'IRI': 'http://www.UniversityReferenceOntology.og/HERO#Degree',
+                                      'type': 'Class'}, 'rate_compare': 1.0, 'onto_terms_necessary': simple_onto_terms[0]},
+                       {'question_ngram': ['bachelor'],
+                        'onto_elem': {'name': 'Bachelor', 'IRI': 'http://www.UniversityReferenceOntology.org/HERO'
+                                                                 '#Bachelor',
+                                      'type': 'Class'}, 'rate_compare': 1.0, 'onto_terms_necessary': simple_onto_terms[1]}]
+
+    simple_current_mapping = [{'question_ngram': ['degree'],
+                                'onto_elem': {'name': 'Degree',
+                                              'IRI': 'http://www.UniversityReferenceOntology.og/HERO#Degree',
+                                              'type': 'Class'}},
+                                {'question_ngram': ['bachelor'],
+                                 'onto_elem': {'name': 'Bachelor',
+                                               'IRI': 'http://www.UniversityReferenceOntology.org/HERO#Bachelor',
+                                               'type': 'Class'}}]
+
+
+
+    l = []
+    for m in current_mapping:
+        tuple_t = (m['question_ngram'], m['onto_elem']['IRI'], m['rate_compare'], m['onto_terms_necessary'])
+        l.append(tuple_t)
+
     session["mapping"] = current_mapping
 
     if request.method == 'GET':
-        return render_template("Mapping/Mapping_result_1.html", current_mapping=current_mapping)
+        return render_template("Mapping/Mapping_result_1.html", current_mapping=current_mapping, mapping_to_display=l)
 
 
     # else: if the method is POST
 
-    return render_template("final.html", user_question_key_terms=None)
+    select = request.form.getlist('select_user_mapping')
+
+    user_mapping = build_user_mapping(select, onto_terms)
+
+    final_mapping = []
+
+    simple_current_mapping = [{'question_ngram': ['degree'],
+                                'onto_elem': {'name': 'Degree',
+                                              'IRI': 'http://www.UniversityReferenceOntology.og/HERO#Degree',
+                                              'type': 'Class'}},
+                                {'question_ngram': ['bachelor'],
+                                 'onto_elem': {'name': 'Bachelor',
+                                               'IRI': 'http://www.UniversityReferenceOntology.org/HERO#Bachelor',
+                                               'type': 'Class'}}]
+
+
+    if len(user_mapping) != 0:
+
+        for i in user_mapping:
+            for j in simple_current_mapping:
+                if i['question_ngram'] == j['question_ngram']:
+                    if i['onto_elem']['name'] != j['onto_elem']['name']:
+                        final_mapping.append(i)
+                        simple_current_mapping.remove(j)
+
+        for i in simple_current_mapping:
+            final_mapping.append(i)
+
+    else:
+        final_mapping = simple_current_mapping
+
+    """
+    print(current_mapping)
+    print("\n\n\n")
+    print(user_mapping)
+    print("\n\n\n")
+    print(final_mapping)
+    """
+
+
+    return render_template("final_for_mapping.html", current_mapping=current_mapping,
+                           simple_current_mapping=simple_current_mapping ,sl=select, user_mapping=user_mapping,
+                           final_mapping=final_mapping)
+
 
 
 
@@ -159,8 +291,6 @@ def show_mapping_result():
 #                                       END OF KARIM'S CODE
 #
 
-
-#
 
 
 if __name__ == '__main__':

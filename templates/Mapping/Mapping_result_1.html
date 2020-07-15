@@ -47,62 +47,113 @@
     </nav>
 </div>
 
+
 <br>
+
 
 <div class="steps-progressbar">
     <ul>
         <li class="previous">Select Ontology</li>
         <li class="previous">Ask Question</li>
-        <li class="active">Entity Extraction</li>
-        <li>Entity Matching</li>
+        <li class="previous">Entity Extraction</li>
+        <li class="active">Entity Mapping</li>
         <li>Query Building</li>
     </ul>
 </div>
 
+
 <br>
 <br>
+
+
 
 <div class="container" id="app_2">
     <div class="">
+        <!--
         <h6>This is a Definition</h6>
-        {% for item in current_mapping %}
-            <span class="badge badge-secondary"><h6>{{ item }}</h6></span>
-        {% endfor %}
+        -->
     </div>
 </div>
 
+
 <br>
-<br>
+
 
 <div class="container" id="app_3">
+
+
     <div class="row">
-
-        <div class="col-md-3">
-            <h6>Key terms of the question</h6>
+        <div class="col-md-12">
+            <h6>Key elements of the Mapping</h6>
             <br>
-            <ul class="list-group">
-            </ul>
+<!--
+            {% for item in current_mapping %}
+                <span class="badge badge-secondary"><h6>{{ item }}</h6></span>
+                <br>
+                <br>
+            {% endfor %}
+-->
         </div>
-
-
-        <div class="col-md-1"></div>
-
-        <div class="col-md-3">
-            <br>
-            <br>
-            <br>
-            <h6>If this does not seem correct, you can change it manually</h6>
-        </div>
-
-        <div class="col-md-2"></div>
-
-        <div class="col-md-3 list-group">
-            <h6>User's key terms of the question</h6>
-            <br>
-        </div>
-
     </div>
+
+    <br>
+    <br>
+
+    <div class="container">
+        <form action="{{ url_for('show_mapping_result') }}" method="post">
+            {% for item in mapping_to_display %}
+
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <!--
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">{{ item[0][0] }}</span>
+                            </div>
+                            <h6>{{ item[0][0] }}</h6>
+                            -->
+
+                            <input size="10" value="  {{ item[0][0] }}" disabled>
+
+                            <input type="text" size=""  class="form-control" value="{{ item[1] }}" disabled>
+
+                            <input type="text" size="5" class="" value="{{ item[2] }}" disabled>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <select class="custom-select" id="" name="select_user_mapping">
+                            <option selected value="None">Choose...</option>
+                            {% for i in item[3] %}
+                                <option value="{{ item[0][0] + '---' + i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                </div>
+
+                <br>
+                <br>
+                <br>
+            {% endfor %}
+
+            <div class="row">
+                <div class="col-md-9">
+                </div>
+                <div class="col-md-3">
+                    <button type="submit"  class="btn btn-primary mb-2">Submit Mapping</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
 </div>
+
+
+
+
+
 
 
 <!--
