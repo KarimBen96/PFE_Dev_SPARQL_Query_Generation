@@ -42,11 +42,11 @@
     
 	<div class="steps-progressbar">
         <ul>
-            <li class="previous">Select Ontology</li>
-            <li class="previous">Ask Question</li>
-            <li class="active">Entity Extraction</li>
-            <li>Entity Matching</li>
-            <li>Query Building</li>
+            <li class="previous"><b>Select Ontology</b></li>
+            <li class="active"><b>Ask Question</b></li>
+            <li class=""><b>Entity Extraction</b></li>
+            <li><b>Entity Mapping</b></li>
+            <li><b>Query Building</b></li>
         </ul>
     </div>
 	
@@ -55,21 +55,24 @@
 	<div class="container">
 		<form action="{{ url_for('ask_question') }}" method="post">
 			<div class="form-group">
-    			<label for="textarea_question">Introduce your question</label>
+                <label for="textarea_question"><b>Your question</b></label>
     			<textarea class="form-control" id="textarea_question" name="textarea_question" rows="3" disabled>{{ question }}</textarea>
   			</div>
+            <!--
 			<button type="submit" class="btn btn-primary">Submit</button>
 			<button type="reset" class="btn btn-secondary">Reset</button>
+			-->
 		</form>
     </div>
 
+	<br>
 	<br>
 	<br>
 
 	<div class="container" id="app_3">
 		<div class="row">
 			<div class="col-md-2">
-				<h6>PREDICTED CLASS</h6>
+				<h6>Predicted Class</h6>
 				<ul class="list-group">
                     <li class="list-group-item" v-for="item in items" v-bind:class="{'active' : [[ item ]] == question_class}">
                         [[ item ]]
@@ -85,13 +88,15 @@
                 <br>
                 <br>
                 <h6>If the class does not seem correct, you can change it manually</h6>
+                <!--
                 <button type="button" class="btn btn-warning" v-on:click="isSeen = true">Change the class</button>
+                -->
             </div>
 
             <div class="col-md-2"></div>
 
             <div class="col-md-2 list-group" v-show="isSeen">
-				<h6>CORRECTED CLASS</h6>
+				<h6>Corrected Class</h6>
                 <!--
                 <a href="" class="list-group-item list-group-item-action" v-for="item in items" v-on:click="corrected_class = [[ item ]]">
                 -->
@@ -110,6 +115,8 @@
                     <!-- An invisible input just to submit to the form and get the new question class -->
                     <input id="input_class_corrected" name="input_class_corrected" :value="local_question_class" v-show="false">
 
+                    <br>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 			</div>
@@ -117,6 +124,7 @@
 	</div>
 
 
+    <!--
 	<div class="btn-toolbar" >
 		<div class="btn-group" role="group" style="position: absolute; left: 70px; bottom: 15px">
 			<button class="btn btn-primary" type="button">Previous</button>
@@ -125,6 +133,13 @@
 			<button class="btn btn-primary" type="button">Next</button>
 		</div>
     </div>
+    -->
+
+
+
+
+
+
 
 
 

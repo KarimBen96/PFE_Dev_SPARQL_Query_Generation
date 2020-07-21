@@ -122,4 +122,4 @@ def transform_data_matrix(df_question_train):
 
 def classer_question(question):
     classes = ["Definition", 'Yes / No', "Complex"]
-    return classes[1]
+    return classes[0]

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Final for Mapping</title>
+</head>
+<body>
+
+    <div>
+
+        <br>
+        <h2>It's almost the end, be happy :)</h2>
+        <br>
+        <br>
+        <br>
+
+        {{ current_mapping }}
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        {% for item in current_onto_elem_necessary %}
+            {{ item }}
+            <br>
+        {% endfor %}
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        {% for item in simple_onto_terms %}
+            {% for i in item %}
+                {{ i }}
+                <br>
+            {% endfor %}
+            <br>
+            <br>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

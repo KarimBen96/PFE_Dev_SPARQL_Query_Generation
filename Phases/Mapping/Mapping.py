@@ -19,114 +19,17 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk import ngrams
 from nltk.tokenize import word_tokenize
+from Phases.Ontology_Exploration.Ontology_Exploration import *
+from enum import Enum
 
+class Type(Enum):
+    CLASS = 1
+    OBJECT_PROPERTY = 2
+    DATA_PROPERTY = 3
+    ANNOTATION_PROPERTY = 4
 #
-#               Defining Global Variables
+#               General Functions
 #
-
-
-type_class = "Class"
-type_object_prop = "Object_Property"
-type_data_prop = "Data_Property"
-type_annotation_prop = "Annotation"
-
-file_name_class = "Ontology_Elements_Files/Ontology_HERO/Classes.csv"
-
-file_name_object_prop = "Ontology_Elements_Files/Ontology_HERO/ObjectProperties.csv"
-
-file_name_data_prop = "Ontology_Elements_Files/Ontology_HERO/DataProperties.csv"
-
-file_name_annotation_prop = "Ontology_Elements_Files/Ontology_HERO/AnnotationsProperties.csv"
-
-
-list_class = []
-list_object_prop = []
-list_data_prop = []
-list_annotation_prop = []
-
-# List of ontology data names (only names)
-list_class_prepro = []
-list_data_prepro = []
-list_object_prepro = []
-list_annotation_prepro = []
-
-
-all_lists = []
-
-#
-#               Some Pre-processing before the functions
-#
-
-
-def init_onto_for_mapping():
-    """
-    This function initiate the ontology elements for the mapping phase
-    Maybe it should be done in Ontology Exploration
-
-    :return:
-    """
-
-    list_class = onto_type_file_to_dict(file_name_class, type_class)
-    list_object_prop = onto_type_file_to_dict(file_name_object_prop, type_object_prop)
-    list_data_prop = onto_type_file_to_dict(file_name_data_prop, type_data_prop)
-    list_annotation_prop = onto_type_file_to_dict(file_name_annotation_prop, type_annotation_prop)
-
-    for i in list_class[:]:
-        i['IRI'] = i['IRI'].rstrip("\n")
-    for i in list_data_prop[:]:
-        i['IRI'] = i['IRI'].rstrip("\n")
-    for i in list_object_prop[:]:
-        i['IRI'] = i['IRI'].rstrip("\n")
-    for i in list_annotation_prop[:]:
-        i['IRI'] = i['IRI'].rstrip("\n")
-
-
-    for i in list_class[:]:
-        list_class_prepro.append(sep_str_onto_elem(i['name']))
-    for i in list_data_prop[:]:
-        list_data_prepro.append(sep_str_onto_elem(i['name']))
-    for i in list_object_prop[:]:
-        list_object_prepro.append(sep_str_onto_elem(i['name']))
-    for i in list_annotation_prop[:]:
-        list_annotation_prepro.append(sep_str_onto_elem(i['name']))
-
-    global  all_lists
-    all_lists = (list_class, list_object_prop, list_data_prop, list_annotation_prop)
-
-
-
-
-#
-#               The Functions
-#
-
-
-def onto_type_file_to_dict(file_name, type_prop):
-    """
-    Convert a file of data of the ontology to a list of dictionnaries. A dictionnary
-    for each line of the file that is structured as follow:
-    {"name": "", "IRI": "", "type": ""}
-    The list contains only one type of property
-    by the type of the property
-
-    The fuction returns a list of dictionnaries
-    """
-
-    list_file_line = []
-    dict_tempo = {"name": "", "IRI": "", "type": ""}
-    onto_elem_type = type_prop
-
-    with open(file_name, "r") as f:
-        lines = f.readlines()
-        for l in lines:
-            dict_tempo = {"name": "", "IRI": "", "type": ""}
-            dict_tempo["type"] = onto_elem_type
-            dict_tempo["name"] = (l.split(","))[0]
-            dict_tempo["IRI"] = (l.split(","))[1]
-            list_file_line.append(dict_tempo)
-
-    return list_file_line
-
 
 def sep_str_onto_elem(str_text):
     """
@@ -157,12 +60,20 @@ def sep_str_onto_elem(str_text):
     return str_return
 
 
+
 def lemmatize_word(word, nlp=nlp):
     tempo = []
     tempo.insert(0, word)
 
     doc = nlp((' '.join([str(elem) for elem in tempo])))
-    return [tokens.lemma_ for tokens in doc]
+    ll = [tokens.lemma_ for tokens in doc]
+
+    if len(ll) > 0:
+        if ll[0] == '-PRON-':
+            return tempo
+
+    return ll
+
 
 
 def lemmatize_list(w_list, nlp=nlp):
@@ -174,9 +85,11 @@ def lemmatize_list(w_list, nlp=nlp):
     return lemma_list
 
 
+
 def tuple_to_string(tupl):
     st = ' '.join(tupl)
     return st
+
 
 
 def list_to_string(lis):
@@ -184,8 +97,9 @@ def list_to_string(lis):
     return st
 
 
+"""
 def ngram_generation(str_question, n_gram):
-    """
+    
     Updated: it returns a list of strings instead of a list of lists
 
     This function generate a list of all the n_grams (of lengh n_gram - the parameter -) and each
@@ -194,7 +108,7 @@ def ngram_generation(str_question, n_gram):
     Parameters:
     - str_question: should be a question in string form but if it is a list ---> will be converted
     - n_gram: number of elements in the n_gram
-    """
+   
 
     if type(str_question) is list:
         question = ''
@@ -206,6 +120,26 @@ def ngram_generation(str_question, n_gram):
     list_ngram = []
     n_grams = ngrams(str_question.split(), n_gram)
     for item in n_grams:
+        list_ngram.append(tuple_to_string(item))
+
+    return list_ngram
+
+"""
+
+
+def ngram_generation(str_question, n_gram):
+
+    if type(str_question) is list:
+        question = ''
+        for item in str_question:
+            question += item + ' '
+        str_question = question[:-1]
+
+    str_question = str_question.lower()
+    list_ngram = []
+    comb = nltk.combinations( str_question.split(), n_gram)
+    #n_grams = ngrams(str_question.split(), n_gram)
+    for item in comb:
         list_ngram.append(tuple_to_string(item))
 
     return list_ngram
@@ -234,57 +168,86 @@ def rate_list_compare(list_1, list_2, nlp=nlp):
     return rate
 
 
-def get_onto_elem_necessary(question_terms, all_lists_=None):
+
+def light_rate_list_compare(list_1, list_2, nlp=nlp):
+    """
+    Checks only if, at least, 1 term of list_1 is in list_2
     """
 
+    list_1 = [i.lower() for i in list_1]
+    list_2 = [i.lower() for i in list_2]
+
+    list_1 = lemmatize_list(list_1)
+    list_2 = lemmatize_list(list_2)
+
+    for item in list_1:
+        if item in list_2:
+            return True
+
+    return False
+
+
+
+def get_onto_elems_necessary(question_terms, onto):
+    """
+    - (question_terms): are already pre-processed (lemma...)
+    - (onto): is the entire ontology
     """
 
-    if all_lists_ is None:
-        all_lists_ = all_lists
-    list_onto_elem_necessary = []  # a list of dictionaries (like the ontology ones)
+    list_onto_elems_necessary = []  # a list of dictionaries (like the ontology ones)
 
-    for list_ in all_lists_[:]:
-        for item in list_[1:]:
-            if rate_list_compare(question_terms, lemmatize_list(sep_str_onto_elem(item['name']))) > 0:
-                list_onto_elem_necessary.append(item)
-
-    list_onto_elem_necessary_names = []
-    for i in list_onto_elem_necessary:
-        list_onto_elem_necessary_names.append(sep_str_onto_elem(i['name']))
-
-    return list_onto_elem_necessary, list_onto_elem_necessary_names
+    for o in onto.onto_elems_list:
+        # if rate_list_compare(question_terms, o.processed_name) > 0:
+        if light_rate_list_compare(question_terms, o.processed_name):
+            list_onto_elems_necessary.append(o)
 
 
-def get_onto_elem_for_mapping(list_ngrams_, onto_elem_necessary_):
+    # for i in onto.onto_elems_list:
+    #  list_onto_elems_necessary_names.append(i.name)
+
+    return list_onto_elems_necessary
+
+
+
+def get_onto_elems_for_mapping(question_terms, onto_elems_necessary, onto=None):
     """
     Returns a list of dictionaries like:
-                                        question_ngram:...   onto_elem:...   rate_compare
+                                        question_ngram:...   OntologyElement:...   rate_compare
 
-    The returned list is also ordered following the (rate_compare) in descendent
-
-    Updated: onto_elem_necessary_   is not used
     """
 
     list_dict = []
+    list_ngrams_ = []
+    list_ngrams_2 = []
+
+    max_grams = min(5, len(question_terms) + 1)
+    for i in range(1, max_grams):
+        # we add a cond in case it's not possible: if we 2 terms ---> we can't have 4 gram !!!
+        list_ngrams_.append(ngram_generation(question_terms, i))
 
     for n in list_ngrams_:  # We are in the 1-gram or 2-grams or ...
+        for w in n:  # We are in one of all the 1-grams or 2-grams or ...
+            w_list = w.split()
+            list_ngrams_2.append(w_list)
 
-        #        for ll in list_onto[1:]:
-        for ll in onto_elem_necessary_:
 
-            for w in n:  # We are in one of all the 1-grams or 2-grams or ...
-                w_list = w.split()
-                if rate_list_compare(w_list, sep_str_onto_elem(ll['name'])) > 0:
-                    # print('{:<45}{:<45}{:<}'.format(str(w_list), str(ll), round(rate_list_compare(w_list, ll), 2)))
-                    dict_tempo = {}
-                    dict_tempo["question_ngram"] = w_list
-                    dict_tempo["onto_elem"] = ll
-                    dict_tempo["rate_compare"] = round(rate_list_compare(w_list, sep_str_onto_elem(ll['name'])), 2)
-                    list_dict.append(dict_tempo)
+    for n in list_ngrams_2:
+        for o in onto_elems_necessary:
+            if rate_list_compare(n, o.processed_name) > 0:
+                dict_tempo = {"question_ngram": n, "onto_elem": o,
+                              "rate_compare": round(rate_list_compare(n, o.processed_name), 2)}
+                list_dict.append(dict_tempo)
 
     list_dict = sorted(list_dict, key=lambda d: d['rate_compare'], reverse=True)
 
     return list_dict
+
+
+
+#
+#               Functions used in the Mapping Functions
+#
+
 
 
 def get_word_pos_tag(word):
@@ -294,6 +257,7 @@ def get_word_pos_tag(word):
     return p
 
 
+
 def check_pos_tag_noun(word):
     p = get_word_pos_tag(word)
     aig = (p == 'NN' or p == 'NNS' or p == 'NNP' or p == 'NNPS')
@@ -301,38 +265,150 @@ def check_pos_tag_noun(word):
     return aig
 
 
-def mapping_definition(question_terms, onto_terms_necessary):
+
+def check_onto_sim_rate(onto_elems_for_mapping, rate):
+    """
+    Updated: => rate and not == rate, it won't have any impact on rate == 1
+
+    Checks if, in the (onto_terms_necessary), there is at least an element whose rate is (rate)
+    If there is, 1 or more, we return them (as a list of onto_elem) in a list
     """
 
+    aig = False
+    list_return = []
+
+    for item in onto_elems_for_mapping:
+        if item['rate_compare'] >= rate:
+            list_return.append(item)
+            aig = True
+
+    return aig, list_return
+
+
+def check_biggest_ngram_onto(onto_elems_for_mapping):
+    """
+    From the (onto_elems_for_mapping) list, it checks and returns the biggest ngrams
+    - (onto_elems_for_mapping) is a list of dictionaries like:
+                                        question_ngram:...   OntologyElement:...   rate_compare
+
     """
 
-    list_ngram = []
-    list_final = []
+    len_ngram = 0
+    list_return = []
 
-    for i in range(1, 5):
-        # we add a cond in case it's not possible: if we 2 terms ---> we can't have 4 gram !!!
-        if len(ngram_generation(question_terms, i)) > 0:
-            list_ngram.append(ngram_generation(question_terms, i))
+    a = 0
 
-    list_tempo = get_onto_elem_for_mapping(list_ngram, onto_terms_necessary)
+    for l in onto_elems_for_mapping:
+        if len(l['onto_elem'].processed_name) >= a:
+            a = len(l['onto_elem'].processed_name)
 
-    for item in list_tempo:
+    for l in onto_elems_for_mapping:
+        if len(l['onto_elem'].processed_name) == a:
+            list_return.append(l)
 
-        if len(item['question_ngram']) == 1:  # if we have 1-gram in the question term
+    return a, list_return
 
-            if check_pos_tag_noun(item['question_ngram'][0]):
-                if (item['rate_compare'] == 1) and (item['onto_elem']['type'] == 'Class'):
-                    list_final.append(item)
 
-                elif item['rate_compare'] == 1:
-                    list_final.append(item)
 
-        else:  # if we have 2-grams or 3-grams or 4-grams
-            if (item['rate_compare'] == 1) and (item['onto_elem']['type'] == 'Class'):
-                list_final.append(item)
+#
+#               Mapping Functions
+#
 
-            elif item['rate_compare'] == 1:
-                list_final.append(item)
 
-    #    print("we mapped a definition")
+def mapping_definition(onto_elems_for_mapping):
+
+
+    list_tempo = onto_elems_for_mapping
+    biggest_rate = list_tempo[0]['rate_compare']
+    a, b = check_onto_sim_rate(list_tempo, 1)
+
+    if a:  # if we have rate = 1 or many, we take the biggest n-gram
+        c, d = check_biggest_ngram_onto(b)
+        list_final = d
+
+    else:  # else, we take the top 5 and we check for rate = 0.8 or more
+        if len(list_tempo) >= 5:
+            top_5 = list_tempo[:5]
+        else:
+            top_5 = list_tempo
+        a, b = check_onto_sim_rate(list_tempo, 0.8)
+
+        if a:  # if positive, we take them all, it's unlikely to have more than 1
+            c, d = check_biggest_ngram_onto(b)
+            list_final = d
+
+        else:  # else, we take all the type class in the top 5
+            list_final = [x for x in top_5 if str(x['onto_elem'].type) == str(Type.CLASS)]
+            if len(list_final) == 0:  # else, we take all the biggest rates
+                list_final = [x for x in top_5 if x['rate_compare'] == biggest_rate]
+
     return list_final
+
+
+def mapping_listing (onto_elems_for_mapping):
+
+    list_tempo = onto_elems_for_mapping
+    biggest_rate = list_tempo[0]['rate_compare']
+    a, b = check_onto_sim_rate(list_tempo, 1)
+
+    if a:  # if we have rate = 1 or many, we take the biggest n-gram
+        c, d = check_biggest_ngram_onto(b)
+        list_final = d
+        if(str(list_final[0]['onto_elem'].type))==str(Type.CLASS):
+            tag='entity_list'
+        else:
+            tag = 'property_list'
+
+    else:  # else, we take the top 5 and we check for rate = 0.8 or more
+        if len(list_tempo) >= 5:
+            top_5 = list_tempo[:5]
+        else:
+            top_5 = list_tempo
+        a, b = check_onto_sim_rate(list_tempo, 0.8)
+
+        if a:  # if positive, we take them all, it's unlikely to have more than 1
+            c, d = check_biggest_ngram_onto(b)
+            list_final = d
+            if (str(list_final[0]['onto_elem'].type)) == str(Type.CLASS):
+                tag = 'entity_list'
+            else:
+                tag = 'property_list'
+
+        else:  # else, we take all the type class in the top 5
+            list_final = [x for x in top_5 if str(x['onto_elem'].type) == str(Type.CLASS)]
+            if len(list_final) == 0:  # else, we take all the biggest rates
+                list_final = [x for x in top_5 if x['rate_compare'] == biggest_rate]
+                if (str(list_final[0]['onto_elem'].type)) == str(Type.CLASS):
+                    tag = 'entity_list'
+                else:
+                    tag = 'property_list'
+
+    return tag,list_final
+
+
+def mapping_How_complex(onto_elems_for_mapping):
+    list_tempo = onto_elems_for_mapping
+    top_10=list_tempo[:10]
+    list_object=[]
+    list_classe = []
+    list_final=[]
+    for j in top_10:         # we search an oject property IRI
+        if ((str(j['onto_elem'].type) == str(Type.OBJECT_PROPERTY)or str(j['onto_elem'].type) ==str(Type.DATA_PROPERTY))
+        and (j['rate_compare']>=0.8)):
+                list_object.append(j)
+
+        else:  # we search a relation between 2 classes
+                if str(j['onto_elem'].type) == str(Type.CLASS):
+                    list_classe.append(j)
+
+
+    if(len(list_object)!=0):#priority to object properties
+        c, list_final = check_biggest_ngram_onto(list_object)
+        tag = 'How_complex'
+    else:# check the classes
+        if(len(list_classe)>=2):
+            list_final=list_classe
+            tag = 'HObject_property_find'
+
+    return tag,list_final
+
