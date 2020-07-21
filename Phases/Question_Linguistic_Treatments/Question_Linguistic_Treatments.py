@@ -6,6 +6,7 @@ import warnings
 import spacy
 import en_core_web_sm
 import nltk
+import re
 
 warnings.filterwarnings('ignore')
 
@@ -47,7 +48,8 @@ def dict_to_list(dict):
     return dictlist
 
 
-def lemmatize_list(w_list, local_nlp=nlp):
+
+def lemmatize_list_FIRST_ONE(w_list, local_nlp=nlp):
     lemma_list = []
 
     for w in w_list:
@@ -57,19 +59,43 @@ def lemmatize_list(w_list, local_nlp=nlp):
     return [tokens.lemma_ for tokens in doc]
 
 
+
+def lemmatize_word(word, nlp=nlp):
+    tempo = []
+    tempo.insert(0, word)
+
+    doc = nlp((' '.join([str(elem) for elem in tempo])))
+    ll = [tokens.lemma_ for tokens in doc]
+
+    if len(ll) > 0:
+        if ll[0] == '-PRON-':
+            return tempo
+
+    return ll
+
+
+
+def lemmatize_list(w_list, nlp=nlp):
+    lemma_list = []
+
+    for w in w_list:
+        lemma_list.append(lemmatize_word(w)[0])
+
+    return lemma_list
+
+
+
 def question_roots(question, local_nlp=en_nlp, stop_list=light_list_stop_words):
     """
     Returns a python dictionary of the root, verbs and nouns of the question. And a list of this dictionary.
     This is done with a dependency tree of the question terms
     """
 
-    # We remove the last character if not alphanumeric
-    if not question[-1].isalnum():
-        question = question[:-1]
-
+    question = re.findall('[A-Za-z]+', question.lower())
+    question = ' '.join(question)
     q = question
 
-    question = nlp(question.lower())
+    question = nlp(question)
     roots = {}
 
     for token in question:
@@ -88,6 +114,7 @@ def question_roots(question, local_nlp=en_nlp, stop_list=light_list_stop_words):
     roots_list = [w for w in lemmatized_question if w not in stop_list]
 
     return roots, roots_list
+
 
 
 def question_list_lemma(question_list, local_nlp=en_nlp):

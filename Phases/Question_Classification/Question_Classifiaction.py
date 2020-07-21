@@ -1,22 +1,12 @@
 import warnings
 
 warnings.filterwarnings('ignore')
-import pickle
-import numpy as np
-import json
-import sklearn
 import csv
-# from textblob import TextBlob
-from scipy import spatial
 import pandas as pd
-import spacy
-from spacy import displacy
-from collections import Counter
 import en_core_web_sm
 
 en_nlp = en_core_web_sm.load()
 
-import os
 import logging
 
 from sklearn.naive_bayes import GaussianNB
@@ -122,4 +112,4 @@ def transform_data_matrix(df_question_train):
 
 def classer_question(question):
     classes = ["Definition", 'Yes / No', "Complex"]
-    return classes[1]
+    return classes[0]
