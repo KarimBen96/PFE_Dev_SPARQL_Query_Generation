@@ -3,16 +3,11 @@
 #
 
 
-import os
-import numpy as np
-from scipy import spatial
-import matplotlib.pyplot as plt
 import spacy
 
 nlp = spacy.load('en_core_web_sm')
 from spacy_wordnet.wordnet_annotator import WordnetAnnotator
 
-import time
 import re
 
 import nltk
@@ -35,35 +30,6 @@ class Type(Enum):
     ANNOTATION_PROPERTY = 4
 
 
-
-
-type_class = "Class"
-type_object_prop = "Object_Property"
-type_data_prop = "Data_Property"
-type_annotation_prop = "Annotation"
-
-file_name_class = "Ontology_Elements_Files/Ontology_HERO/Classes.csv"
-
-file_name_object_prop = "Ontology_Elements_Files/Ontology_HERO/ObjectProperties.csv"
-
-file_name_data_prop = "Ontology_Elements_Files/Ontology_HERO/DataProperties.csv"
-
-file_name_annotation_prop = "Ontology_Elements_Files/Ontology_HERO/AnnotationsProperties.csv"
-
-
-list_class = []
-list_object_prop = []
-list_data_prop = []
-list_annotation_prop = []
-
-# List of ontology data names (only names)
-list_class_prepro = []
-list_data_prepro = []
-list_object_prepro = []
-list_annotation_prepro = []
-
-
-all_lists = []
 
 
 
