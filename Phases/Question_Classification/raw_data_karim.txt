@@ -1,0 +1,149 @@
+DEF:a What is a research group
+DEF:a What does mean a research university work
+DEF:a What is the faculty
+DEF:a What is the definition of a lecturer
+DEF:a What is the definition of an instructor
+DEF:a What is the definition of a student
+DEF:a What is the definition of a postdoc
+DEF:a What is the definition of a teaching assistant
+DEF:a What is the definition of an assistant professor
+DEF:a What is the definition of an associate professor
+DEF:a What is the definition of a full professor
+DEF:a What is the definition of a professor emeritus
+DEF:a What is the role of a university president
+DEF:a What does student tuition mean
+DEF:a What is a campus
+DEF:a What is a fulltime student
+DEF:a What is a typical undergraduate curriculum
+DEF:a What is a course
+DEF:a What is the category of a module
+DEF:a What is a credit
+DEF:a What is a course program
+DEF:a What is a module program
+DEF:a What are articulation agreements
+DEF:a What is a master degree
+DEF:a What is a doctorate degree
+DEF:a What is a bachelor of a baccalaureate degree
+DEF:a What is course material
+DEF:a What is the role of the accreditation
+DEF:a What is the definition of an associate degree
+DEF:a what is a school
+DEF:a what is a country
+DEF:a what is a state
+DEF:b what is animalia
+DEF:b what is a lengend
+DEF:b what is myth
+DEF:b what is a burger
+DEF:b what is a  computer
+DEF:b what is deep learning
+DEF:b what is artificial intelligence
+DEF:b what is the definition of book
+DEF:b what is the definition of dog
+DEF:b what is the definition of robery
+DEF:b what is the definition of money landring
+DEF:b what is the right defintion of history
+DEF:b what is the definition of ibject oriented programming
+DEF:b what is the defintion of a lengend
+DEF:b what is the defintion of a family
+DEF:b what is the definition a a teacher
+DEF:b how do we define  amnisia
+DEF:b how do we define insomnia
+DEF:b how de we define a family
+DEF:b how is a family defined
+DEF:b how do we define a book
+DEF:b how do we define politics
+DEF:b how do we define a company
+DEF:b how is the black matter defined
+DEF:b how is nature defiend
+DEF:b how is finacial tuition defined
+DEF:b How is evaluation defined
+DEF:b what does alphabet mean
+DEF:b what does a book mean
+DEF:b what does balck hole mean
+DEF:b what does economy mean
+DEF:b what does a  post-doc mean
+DEF:b what does OOP mean
+DEF:b what does  Marxsim mean
+DEF:b what does empirialism mean
+DEF:b what does a teacher mean
+DEF:b what does a myth mean
+DEF:b what is the main job of a teacher
+DEF:b what is the main role of a director
+DEF:b what is the role of a father
+DEF:b what is the main occupation of a supervisor
+DEF:b what is the role of blanc nodes
+LIST:e What types of grading are there
+LIST:e What possible values have grades
+LIST:e What differences are there between a degree and a certificate
+LIST:e What are course session types
+LIST:e What characteristics have community colleges
+LIST:e Who are accreditors
+LIST:e What are higher education institutions accreditation types
+LIST:e what are the types of certificate
+LIST:e what are the possible academic certeficates
+LIST:e what are the deseases due to the lack of protein
+LIST:e what are the most used trafic colours
+LIST:e what are the greec alphabet letters
+LIST:e what are the most common web navigators
+LIST:e What are the possible academic ranks of a teacher
+LIST:e What are the competency domains of a given teacher
+LIST:e What are research publication categories
+LIST:e What are the criteria to become an undergraduate student advisor
+LIST:e What criteria needed to be taken into account to appoint a dean
+LIST:e What roles have departments in the institution
+LIST:e What criteria are taken into account to generate classification
+LIST:e What higher institutions are there according to the criterion
+LIST:e What are the criteria to become a graduate student
+LIST:e What are the criteria to become an undergraduate student
+LIST:e Which services are provided by a campus
+LIST:e What conditions students have to fulfil to be enrolled
+LIST:e What conditions must a student fulfil to be admitted in a program
+LIST:e What possible forms of financial aid are provided to students
+LIST:e What are the categories of courses
+LIST:e What high education degrees exist
+LIST:e what are the classes of web serevers
+LIST:f what are the social classes that socialogists study
+LIST:f what are the legal statuts of comapnies
+LIST:f what are the illnesses due to lack of protein
+LIST:f what are the componants of a computer
+LIST:f what are the most common types of diabet
+LIST:f what are the prinicpal domains of language study
+LIST:f what are the categories of seires you present
+LIST:f what are the types of programs your institution offers
+LIST:f what types of pizza you prepare in your pizzeria
+LIST:f what are the varieties of tomato you use in your pizza
+LIST:f what are age categories you accpet in your program
+LIST:f what are the groupes if verbs in English
+LIST:f what are the chapters of the AI course that we need
+LIST:f what are the parts of this car causing a problem
+LIST:f what are the modalities of subscribtion
+LIST:f what are the steps to prepare a standard pizza
+LIST:f what are the main ways for the proliferation of the virus
+COMPLEX:g  What is expected from university teachers
+COMPLEX:g  How is a teacher hired
+COMPLEX:g  How is a teacher evaluated
+COMPLEX:g  How is a teacher tenured
+COMPLEX:g  How is a teacher ranked
+COMPLEX:g  How is a typically university organized
+COMPLEX:g  Why are universities organized into departments
+COMPLEX:g  How is chosen a president of a university
+COMPLEX:g  How is called each year of the four years formula
+COMPLEX:g  What is the most common degree
+COMPLEX:g  What is the most popular type of institution
+COMPLEX:g  What is the most prestigious type of institution
+COMPLEX:g  How is organized the academic year
+COMPLEX:g  How are students evaluated
+COMPLEX:g  How are students organized in discussion sessions
+COMPLEX:g  How is a teacher assigned
+COMPLEX:g  how is a pizza preapred
+COMPLEX:h  How do we apply for a Ph.D
+COMPLEX:h  what are the creteria to select a candidate
+COMPLEX:h  How do we apply an orthopedic surgery
+COMPLEX:h  what are the conditions to accept an employee
+COMPLEX:h  how do you selelct your interns
+COMPLEX:h  how is a VISA Acceptation given
+COMPLEX:h  what are the conditions to build a hospital
+COMPLEX:h  what are the criteria to construct a factory in a land
+COMPLEX:h  how is a diabet test done
+COMPLEX:h  how do we form a facebook group
+COMPLEX:h  how is a teacher tenured

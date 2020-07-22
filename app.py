@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 
 from Phases.Ontology_Exploration import Ontology_Exploration as oe
 from Phases.Question_Classification.Question_Classifiaction import classer_question
+from Phases.Question_Classification import Question_Classifier as qc
 from Phases.Question_Linguistic_Treatments import Question_Linguistic_Treatments as qlt
 from Phases.Mapping import Mapping as mapping
 from Phases.Query_Building import Query_Building as qb
@@ -21,6 +22,8 @@ app.config['UPLOAD_FOLDER'] = 'Uploaded_Files'
 # This is for the secret key of "session"
 app.config["SECRET_KEY"] = secrets.token_urlsafe(16)
 app.debug = True
+
+
 
 
 
@@ -50,6 +53,10 @@ list_stop_words = qlt.light_list_stop_words
 
 
 
+
+
+
+
 #####################################################
 #
 #               Ontology Selection
@@ -60,7 +67,7 @@ list_stop_words = qlt.light_list_stop_words
 
 
 
-@app.route('/', methods=['GET', 'POST'])   # KARIM  #Adel: I made it the home page
+@app.route('/', methods=['GET', 'POST'])   # KARIM  # ADEL: I made it the home page
 def select_ontology():
     """
 
@@ -82,7 +89,7 @@ def select_ontology():
     current_ontology = None
 
     current_ontology = oe.load_ontology(onto_path)
-    current_ontology = oe.Ontology(oe.build_ontology(current_ontology), 'ontology')
+    current_ontology = oe.OntologySchema(oe.build_ontology(current_ontology), 'ontology')
 
 
     # return render_template("Select_ontology.html", see_alert=see_alert)
@@ -93,11 +100,17 @@ def select_ontology():
 
 
 
+  
+  
+  
+  
+  
 ###############################################################
 #
 #               Asking the Question and Terms Extraction
 #
 ###############################################################
+
 
 
 
@@ -120,7 +133,9 @@ def ask_question():
     current_question = None
     current_question = question
 
-    question_class = classer_question(question)
+    # question_class = classer_question(question)
+    question_class = qc.classer_question(question)
+
     global current_question_class
     current_question_class = None
     current_question_class = question_class
@@ -143,6 +158,8 @@ def ask_question_class():
     global current_question
     question = current_question
 
+    first_question_class = question_class
+
     if request.method == 'GET':
         return render_template("Question_Classification/Ask_question_class.html", question_class=question_class,
                                question=question)
@@ -156,13 +173,22 @@ def ask_question_class():
         current_question_class = user_question_class
 
 
+    file_name = 'Phases/Question_Classification/some_user_questions.txt'
+    with open(file_name, 'a') as file:
+        line = '{:<13}{:<13}{:<}'.format(first_question_class, current_question_class, question)
+        file.write(line)
+        file.write('\n')
+
+
     # return render_template("final.html", c=user_question_class)
     return redirect(url_for("question_key_terms_extraction"))
 
 
 
-
-
+  
+  
+  
+  
 @app.route('/question_key_terms_extraction', methods=['GET', 'POST'])   # KARIM
 def question_key_terms_extraction():
     """
@@ -221,11 +247,15 @@ def question_key_terms_extraction():
     # return render_template("final.html", user_question_key_terms=user_question_key_terms)
     return redirect(url_for("show_mapping_result_clean"))
 
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
 ###########################################
 #
 #               Mapping
@@ -376,6 +406,9 @@ def show_mapping_result_clean():
                            final_mapping=final_mapping)
     """
     return redirect(url_for('query_building'))
+
+  
+  
 
 
 

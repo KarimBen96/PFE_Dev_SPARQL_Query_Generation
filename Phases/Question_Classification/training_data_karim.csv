@@ -1,0 +1,150 @@
+Question|WH|WH-Bigram|WH-POS|WH-NBOR-POS|Root-POS|Class
+What is a research group|What|What is|WP|VBZ|VBZ|DEF
+What does mean a research university work|What|What does|WP|VBZ|VB|DEF
+What is the faculty|What|What is|WP|VBZ|VBZ|DEF
+What is the definition of a lecturer|What|What is|WP|VBZ|VBZ|DEF
+What is the definition of an instructor|What|What is|WP|VBZ|VBZ|DEF
+What is the definition of a student|What|What is|WP|VBZ|VBZ|DEF
+What is the definition of a postdoc|What|What is|WP|VBZ|VBZ|DEF
+What is the definition of a teaching assistant|What|What is|WP|VBZ|VBZ|DEF
+What is the definition of an assistant professor|What|What is|WP|VBZ|VBZ|DEF
+What is the definition of an associate professor|What|What is|WP|VBZ|VBZ|DEF
+What is the definition of a full professor|What|What is|WP|VBZ|VBZ|DEF
+What is the definition of a professor emeritus|What|What is|WP|VBZ|VBZ|DEF
+What is the role of a university president|What|What is|WP|VBZ|VBZ|DEF
+What does student tuition mean|What|What does|WP|VBZ|VB|DEF
+What is a campus|What|What is|WP|VBZ|VBZ|DEF
+What is a fulltime student|What|What is|WP|VBZ|VBZ|DEF
+What is a typical undergraduate curriculum|What|What is|WP|VBZ|VBZ|DEF
+What is a course|What|What is|WP|VBZ|VBZ|DEF
+What is the category of a module|What|What is|WP|VBZ|VBZ|DEF
+What is a credit|What|What is|WP|VBZ|VBZ|DEF
+What is a course program|What|What is|WP|VBZ|VBZ|DEF
+What is a module program|What|What is|WP|VBZ|VBZ|DEF
+What are articulation agreements|What|What are|WP|VBP|VBP|DEF
+What is a master degree|What|What is|WP|VBZ|VBZ|DEF
+What is a doctorate degree|What|What is|WP|VBZ|VBZ|DEF
+What is a bachelor of a baccalaureate degree|What|What is|WP|VBZ|VBZ|DEF
+What is course material|What|What is|WP|VBZ|VBZ|DEF
+What is the role of the accreditation|What|What is|WP|VBZ|VBZ|DEF
+What is the definition of an associate degree|What|What is|WP|VBZ|VBZ|DEF
+what is a school|what|what is|WP|VBZ|VBZ|DEF
+what is a country|what|what is|WP|VBZ|VBZ|DEF
+what is a state|what|what is|WP|VBZ|VBZ|DEF
+what is animalia|what|what is|WP|VBZ|VBZ|DEF
+what is a lengend|what|what is|WP|VBZ|VBZ|DEF
+what is myth|what|what is|WP|VBZ|VBZ|DEF
+what is a burger|what|what is|WP|VBZ|VBZ|DEF
+what is a  computer|what|what is|WP|VBZ|VBZ|DEF
+what is deep learning|what|what is|WP|VBZ|VBZ|DEF
+what is artificial intelligence|what|what is|WP|VBZ|VBZ|DEF
+what is the definition of book|what|what is|WP|VBZ|VBZ|DEF
+what is the definition of dog|what|what is|WP|VBZ|VBZ|DEF
+what is the definition of robery|what|what is|WP|VBZ|VBZ|DEF
+what is the definition of money landring|what|what is|WP|VBZ|VBZ|DEF
+what is the right defintion of history|what|what is|WP|VBZ|VBZ|DEF
+what is the definition of ibject oriented programming|what|what is|WP|VBZ|VBZ|DEF
+what is the defintion of a lengend|what|what is|WP|VBZ|VBZ|DEF
+what is the defintion of a family|what|what is|WP|VBZ|VBZ|DEF
+what is the definition a a teacher|what|what is|WP|VBZ|VBZ|DEF
+how do we define  amnisia|how|how do|WRB|VBP|VB|DEF
+how do we define insomnia|how|how do|WRB|VBP|VB|DEF
+how de we define a family|how|how de|WRB|FW|VBP|DEF
+how is a family defined|how|how is|WRB|VBZ|VBZ|DEF
+how do we define a book|how|how do|WRB|VBP|VB|DEF
+how do we define politics|how|how do|WRB|VBP|VB|DEF
+how do we define a company|how|how do|WRB|VBP|VB|DEF
+how is the black matter defined|how|how is|WRB|VBZ|VBN|DEF
+how is nature defiend|how|how is|WRB|VBZ|VBZ|DEF
+how is finacial tuition defined|how|how is|WRB|VBZ|VBZ|DEF
+How is evaluation defined|How|How is|WRB|VBZ|VBN|DEF
+what does alphabet mean|what|what does|WP|VBZ|VB|DEF
+what does a book mean|what|what does|WP|VBZ|VB|DEF
+what does balck hole mean|what|what does|WP|VBZ|NN|DEF
+what does economy mean|what|what does|WP|VBZ|VB|DEF
+what does a  post-doc mean|what|what does|WP|VBZ|NN|DEF
+what does OOP mean|what|what does|WP|VBZ|VB|DEF
+what does  Marxsim mean|what|what does|WP|VBZ|VB|DEF
+what does empirialism mean|what|what does|WP|VBZ|JJ|DEF
+what does a teacher mean|what|what does|WP|VBZ|VB|DEF
+what does a myth mean|what|what does|WP|VBZ|VB|DEF
+what is the main job of a teacher|what|what is|WP|VBZ|VBZ|DEF
+what is the main role of a director|what|what is|WP|VBZ|VBZ|DEF
+what is the role of a father|what|what is|WP|VBZ|VBZ|DEF
+what is the main occupation of a supervisor|what|what is|WP|VBZ|VBZ|DEF
+what is the role of blanc nodes|what|what is|WP|VBZ|VBZ|DEF
+What types of grading are there|What|What types|WDT|NNS|VBP|LIST
+What possible values have grades|What|What possible|WDT|JJ|VBP|LIST
+What differences are there between a degree and a certificate|What|What differences|WP|NNS|VBP|LIST
+What are course session types|What|What are|WP|VBP|VBP|LIST
+What characteristics have community colleges|What|What characteristics|WP|NNS|VBP|LIST
+Who are accreditors|Who|Who are|WP|VBP|VBP|LIST
+What are higher education institutions accreditation types|What|What are|WP|VBP|VBP|LIST
+what are the types of certificate|what|what are|WP|VBP|VBP|LIST
+what are the possible academic certeficates|what|what are|WP|VBP|VBP|LIST
+what are the deseases due to the lack of protein|what|what are|WP|VBP|VBP|LIST
+what are the most used trafic colours|what|what are|WP|VBP|VBP|LIST
+what are the greec alphabet letters|what|what are|WP|VBP|VBP|LIST
+what are the most common web navigators|what|what are|WP|VBP|VBP|LIST
+What are the possible academic ranks of a teacher|What|What are|WP|VBP|VBP|LIST
+What are the competency domains of a given teacher|What|What are|WP|VBP|VBP|LIST
+What are research publication categories|What|What are|WP|VBP|VBP|LIST
+What are the criteria to become an undergraduate student advisor|What|What are|WP|VBP|VBP|LIST
+What criteria needed to be taken into account to appoint a dean|What|What criteria|WDT|NNS|NNS|LIST
+What roles have departments in the institution|What|What roles|WP|NNS|VBP|LIST
+What criteria are taken into account to generate classification|What|What criteria|WDT|NNS|VBN|LIST
+What higher institutions are there according to the criterion|What|What higher|WDT|JJR|VBP|LIST
+What are the criteria to become a graduate student|What|What are|WP|VBP|VBP|LIST
+What are the criteria to become an undergraduate student|What|What are|WP|VBP|VBP|LIST
+Which services are provided by a campus|Which|Which services|WDT|NNS|VBN|LIST
+What conditions students have to fulfil to be enrolled|What|What conditions|WDT|NNS|VBP|LIST
+What conditions must a student fulfil to be admitted in a program|What|What conditions|WDT|NNS|NN|LIST
+What possible forms of financial aid are provided to students|What|What possible|WDT|JJ|VBN|LIST
+What are the categories of courses|What|What are|WP|VBP|VBP|LIST
+What high education degrees exist|What|What high|WDT|JJ|VBP|LIST
+what are the classes of web serevers|what|what are|WP|VBP|VBP|LIST
+what are the social classes that socialogists study|that|what are that socialogists|WDT|VBZ|VBP|LIST
+what are the legal statuts of comapnies|what|what are|WP|VBP|VBP|LIST
+what are the illnesses due to lack of protein|what|what are|WP|VBP|VBP|LIST
+what are the componants of a computer|what|what are|WP|VBP|VBP|LIST
+what are the most common types of diabet|what|what are|WP|VBP|VBP|LIST
+what are the prinicpal domains of language study|what|what are|WP|VBP|VBP|LIST
+what are the categories of seires you present|what|what are|WP|VBP|VBP|LIST
+what are the types of programs your institution offers|what|what are|WP|VBP|VBP|LIST
+what types of pizza you prepare in your pizzeria|what|what types|WDT|NNS|VBP|LIST
+what are the varieties of tomato you use in your pizza|what|what are|WP|VBP|VBP|LIST
+what are age categories you accpet in your program|what|what are|WP|VBP|VBP|LIST
+what are the groupes if verbs in English|what|what are|WP|VBP|VBP|LIST
+what are the chapters of the AI course that we need|what|what are|WP|VBP|VBP|LIST
+what are the parts of this car causing a problem|what|what are|WP|VBP|VBP|LIST
+what are the modalities of subscribtion|what|what are|WP|VBP|VBP|LIST
+what are the steps to prepare a standard pizza|what|what are|WP|VBP|VBP|LIST
+what are the main ways for the proliferation of the virus|what|what are|WP|VBP|VBP|LIST
+ What is expected from university teachers|What|What is|WP|VBZ|VBN|COMPLEX
+ How is a teacher hired|How|How is|WRB|VBZ|VBN|COMPLEX
+ How is a teacher evaluated|How|How is|WRB|VBZ|VBN|COMPLEX
+ How is a teacher tenured|How|How is|WRB|VBZ|VBN|COMPLEX
+ How is a teacher ranked|How|How is|WRB|VBZ|VBN|COMPLEX
+ How is a typically university organized|How|How is|WRB|VBZ|VBZ|COMPLEX
+ Why are universities organized into departments|Why|Why are|WRB|VBP|VBN|COMPLEX
+ How is chosen a president of a university|How|How is|WRB|VBZ|VBN|COMPLEX
+ How is called each year of the four years formula|How|How is|WRB|VBZ|VBN|COMPLEX
+ What is the most common degree|What|What is|WP|VBZ|VBZ|COMPLEX
+ What is the most popular type of institution|What|What is|WP|VBZ|VBZ|COMPLEX
+ What is the most prestigious type of institution|What|What is|WP|VBZ|VBZ|COMPLEX
+ How is organized the academic year|How|How is|WRB|VBZ|VBN|COMPLEX
+ How are students evaluated|How|How are|WRB|VBP|VBN|COMPLEX
+ How are students organized in discussion sessions|How|How are|WRB|VBP|VBN|COMPLEX
+ How is a teacher assigned|How|How is|WRB|VBZ|VBZ|COMPLEX
+ how is a pizza preapred|how|how is|WRB|VBZ|VBZ|COMPLEX
+ How do we apply for a Ph.D|How|How do|WRB|VBP|VB|COMPLEX
+ what are the creteria to select a candidate|what|what are|WP|VBP|VBP|COMPLEX
+ How do we apply an orthopedic surgery|How|How do|WRB|VBP|VB|COMPLEX
+ what are the conditions to accept an employee|what|what are|WP|VBP|VBP|COMPLEX
+ how do you selelct your interns|how|how do|WRB|VBP|VB|COMPLEX
+ how is a VISA Acceptation given|how|how is|WRB|VBZ|VBZ|COMPLEX
+ what are the conditions to build a hospital|what|what are|WP|VBP|VBP|COMPLEX
+ what are the criteria to construct a factory in a land|what|what are|WP|VBP|VBP|COMPLEX
+ how is a diabet test done|how|how is|WRB|VBZ|VBZ|COMPLEX
+ how do we form a facebook group|how|how do|WRB|VBP|VB|COMPLEX
+ how is a teacher tenured|how|how is|WRB|VBZ|VBZ|COMPLEX

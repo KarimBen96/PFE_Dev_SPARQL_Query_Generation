@@ -3,8 +3,9 @@
 #
 
 
-# query Generator
 
+
+# Query Generator
 def query_builder(label, iri1=None, iri2=None, iri3=None):
     if label == 'definition':
         return definition_query_build(iri1)
@@ -25,16 +26,20 @@ def query_builder(label, iri1=None, iri2=None, iri3=None):
     elif label == 'type_belong':
         return Type_Object_Class(iri1, iri2)
 
+      
+      
+      
 # Definition Pattern :
-
 def definition_query_build(iri):
     part1 = f"<{iri}> rdfs:isDefinedBy ?x"
     part2 = f"<{iri}> rdfs:comment ?x"
     query = "SELECT ?x WHERE {{" + part1 + "}UNION {" + part2 + "}}"
     return query
 
-# Listing Pattern :
 
+  
+
+# Listing Pattern
 def entity_list_query_build(iri):
     cond = f"?x rdfs:subClassOf <{iri}>"
     query = "SELECT ?x WHERE {" + cond + "}"
@@ -47,13 +52,16 @@ def property_list_query_build(iri):
     return query
 
 
-#YES / NO  patterns
 
+  
+  
+#YES / NO  patterns
 def object_propoerty_test_build(prop_iri, iri1, iri2):
     cond1 = f"<{prop_iri}> rdfs:domain <{iri1}>; rdfs:range ?C"
     cond2 = f"?C rdfs:subClassOf <{iri2}> "
     query = "ASK{" + cond1 + "," + cond2 + "}"
     return query
+
 
 def hierarchy_Class_Class(class1_iri, class2_iri):
     cond = f"<{class1_iri}> rdfs:subClassOf <{class2_iri}>"
@@ -72,8 +80,11 @@ def Type_Object_Class(obj_iri, class_iri):
     query = "Ask{" + cond + "}"
     return query
 
-#Complex Pattern :
-
+  
+  
+  
+  
+# Complex Pattern :
 def object_property_find_build1(iri1, iri2):
     cond1 = f"?x rdfs:domain <{iri1}>; rdfs:range ?C"
     cond2 = f"?C rdfs:subClassOf <{iri2}> "

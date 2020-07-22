@@ -3,16 +3,11 @@
 #
 
 
-import os
-import numpy as np
-from scipy import spatial
-import matplotlib.pyplot as plt
 import spacy
 
 nlp = spacy.load('en_core_web_sm')
 from spacy_wordnet.wordnet_annotator import WordnetAnnotator
 
-import time
 import re
 
 import nltk
@@ -22,14 +17,33 @@ from nltk.tokenize import word_tokenize
 from Phases.Ontology_Exploration.Ontology_Exploration import *
 from enum import Enum
 
+
+
+
+
+#
+#               Defining Global Variables
+#
+
+
 class Type(Enum):
     CLASS = 1
     OBJECT_PROPERTY = 2
     DATA_PROPERTY = 3
     ANNOTATION_PROPERTY = 4
+
+    
+    
+    
+    
+    
+
+
 #
 #               General Functions
 #
+
+
 
 def sep_str_onto_elem(str_text):
     """
@@ -97,6 +111,8 @@ def list_to_string(lis):
     return st
 
 
+  
+  
 """
 def ngram_generation(str_question, n_gram):
     
@@ -143,6 +159,7 @@ def ngram_generation(str_question, n_gram):
         list_ngram.append(tuple_to_string(item))
 
     return list_ngram
+
 
 
 def rate_list_compare(list_1, list_2, nlp=nlp):
@@ -208,7 +225,8 @@ def get_onto_elems_necessary(question_terms, onto):
     return list_onto_elems_necessary
 
 
-
+  
+  
 def get_onto_elems_for_mapping(question_terms, onto_elems_necessary, onto=None):
     """
     Returns a list of dictionaries like:
@@ -242,6 +260,10 @@ def get_onto_elems_for_mapping(question_terms, onto_elems_necessary, onto=None):
 
     return list_dict
 
+  
+  
+  
+  
 
 
 #
@@ -411,4 +433,5 @@ def mapping_How_complex(onto_elems_for_mapping):
             tag = 'HObject_property_find'
 
     return tag,list_final
+
 
