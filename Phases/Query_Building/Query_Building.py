@@ -2,29 +2,26 @@
 #               This is the Query Building Phase
 #
 
-
-
-
 # Query Generator
-def query_builder(label, iri1=None, iri2=None, iri3=None):
+def query_builder(label, mapped):
     if label == 'definition':
-        return definition_query_build(iri1)
+        return definition_query_build(mapped[0]['onto_elem'].IRI)
     elif label == 'entity_list':
-        return entity_list_query_build(iri1)
+        return entity_list_query_build(mapped[0]['onto_elem'].IRI)
     elif label == 'property_list':
-        return property_list_query_build(iri1)
+        return property_list_query_build(mapped[0]['onto_elem'].IRI)
     elif label == 'Object_property_test':
-        return object_propoerty_test_build(iri1, iri2, iri3)
-    elif label == 'Object_property_find' and iri2 is not None:
-        return object_property_find_build1(iri1, iri2)
+        return object_propoerty_test_build(mapped[0]['onto_elem'].IRI, mapped[1]['onto_elem'].IRI,mapped[2]['onto_elem'].IRI)
+    elif label == 'Object_property_find':
+        return object_property_find_build1(mapped[0]['onto_elem'].IRI, mapped[1]['onto_elem'].IRI)
     elif label == 'property_hierarchy':
-        return hierarchy_Property_Property(iri1, iri2)
+        return hierarchy_Property_Property(mapped[0]['onto_elem'].IRI, mapped[1]['onto_elem'].IRI)
     elif label == 'Entity_hierarchy':
-        return hierarchy_Class_Class(iri1, iri2)
+        return hierarchy_Class_Class(mapped[0]['onto_elem'].IRI, mapped[1]['onto_elem'].IRI)
     elif label == 'How_complex':
-        return how_complex_build(iri1)
+        return how_complex_build(mapped[0]['onto_elem'].IRI)
     elif label == 'type_belong':
-        return Type_Object_Class(iri1, iri2)
+        return Type_Object_Class(mapped[0]['onto_elem'].IRI, mapped[1]['onto_elem'].IRI)
 
       
       
@@ -97,3 +94,5 @@ def how_complex_build(prop_iri):
     cond2 = f'<{prop_iri}> rdfs:comment  ?z'
     query = "SELECT ?x ?y ?z WHERE {{" + cond1 + " }UNION {" + cond2 + "}}"
     return query
+
+
