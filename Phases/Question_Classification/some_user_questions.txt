@@ -1,5 +1,9 @@
 PREDICTED    CORRECT      QUESTION
 Definition   Complex      how is a techer tenured
 Definition   Definition   what is the definition of pizza
+<<<<<<< HEAD
 List         List         what are the different types of pizza
 List         List         what are the different types of pizza ?
+=======
+Definition   Complex      how is a teacher evaluated ?
+>>>>>>> 0af578f1dd77841383c24dd7cee78e610e350968

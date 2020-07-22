@@ -1,6 +1,7 @@
 from itertools import combinations
 from Phases.Ontology_Exploration.Ontology_Exploration import *
 from Phases.Mapping.Mapping import *
+from Phases.Query_Building.Query_Building import *
 """"
 onto = load_ontology('Uploaded_Files/hero.owl')
 el=build_ontology(onto)
@@ -16,9 +17,10 @@ for i in range (1,4):
 onto = load_ontology('Uploaded_Files/hero.owl')
 el=build_ontology(onto)
 ontoS = OntologySchema(el,'hero')
-list= get_onto_elems_necessary(['be','grade'], ontoS)
-list2= get_onto_elems_for_mapping(['be','grade'], list)
-b,a=mapping_listing(list2)
+list= get_onto_elems_necessary(['be','teacher','researcher'], ontoS)
+list2= get_onto_elems_for_mapping(['be','teacher','researcher'], list)
+b,a=mapping_function_selector('Yes / No',list2)
 print(b)
 for i in a:
   print(i['onto_elem'].IRI)
+print(query_builder(b,a))

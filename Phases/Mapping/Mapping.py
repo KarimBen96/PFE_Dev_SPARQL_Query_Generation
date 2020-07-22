@@ -363,8 +363,8 @@ def mapping_definition(onto_elems_for_mapping):
             list_final = [x for x in top_5 if str(x['onto_elem'].type) == str(Type.CLASS)]
             if len(list_final) == 0:  # else, we take all the biggest rates
                 list_final = [x for x in top_5 if x['rate_compare'] == biggest_rate]
-
-    return list_final
+    tag="definition"
+    return tag,list_final
 
 
 def mapping_listing (onto_elems_for_mapping):
@@ -435,3 +435,54 @@ def mapping_How_complex(onto_elems_for_mapping):
     return tag,list_final
 
 
+#Adel
+def mapping_yesno(onto_elems_for_mapping):
+    list_tempo = onto_elems_for_mapping
+    top_5 = list_tempo[:5]
+    list_classes=[]
+    list_obj=[]
+    tag=''
+    #I initialzed it like this so that I can affect the list elements one by one ( statement else)
+    list_final=['','','']
+    for i in top_5:#searching for hierarchy
+        if str(i['onto_elem'].type) == str(Type.CLASS):
+            list_classes.append(i)
+        else:
+            list_obj.append(i)
+    cond=False
+    #Cond to verify the or statement in elif
+    for i in list_classes:
+        if i['rate_compare'] < 0.8:
+            cond=True
+
+    # searching for hierarchy entity  # wi verify list object [0] because it's sorted
+    if len(list_obj)==0 or(list_obj[0]['rate_compare']<0.8):
+        tag='Entity_hierarchy'
+        list_final=list_classes
+    #property hierarchy
+    elif len(list_classes)==0 or cond==True:
+        tag='property_hierarchy'
+        list_final=list_obj
+    else:
+        tag = 'Object_property_test'
+        list_final[0]= list_obj[0]
+        list_final[1]=list_classes[0]
+        list_final[2]=list_classes[1]
+
+
+    return tag,list_final
+
+
+#
+#               Mapping Function Selector
+# Adel
+def mapping_function_selector(label,onto_elems_for_mapping):
+    if(label=='Definition'):
+        tag,mapped_list=mapping_definition(onto_elems_for_mapping)
+    elif(label=='List'):
+        tag,mapped_list = mapping_listing(onto_elems_for_mapping)
+    elif(label =='Complex'):
+        tag,mapped_list = mapping_How_complex(onto_elems_for_mapping)
+    elif (label == 'Yes / No'):
+        tag, mapped_list = mapping_yesno(onto_elems_for_mapping)
+    return tag,mapped_list
