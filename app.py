@@ -28,7 +28,6 @@ app.debug = True
 
 
 
-
 #################################################
 #
 #               Some Global Variables
@@ -57,6 +56,7 @@ list_stop_words = qlt.light_list_stop_words
 
 
 
+
 #####################################################
 #
 #               Ontology Selection
@@ -67,7 +67,7 @@ list_stop_words = qlt.light_list_stop_words
 
 
 
-@app.route('/select_ontology', methods=['GET', 'POST'])   # KARIM
+@app.route('/', methods=['GET', 'POST'])   # KARIM  # ADEL: I made it the home page
 def select_ontology():
     """
 
@@ -89,7 +89,7 @@ def select_ontology():
     current_ontology = None
 
     current_ontology = oe.load_ontology(onto_path)
-    current_ontology = oe.Ontology(oe.build_ontology(current_ontology), 'HERO')
+    current_ontology = oe.OntologySchema(oe.build_ontology(current_ontology), 'ontology')
 
 
     # return render_template("Select_ontology.html", see_alert=see_alert)
@@ -100,11 +100,17 @@ def select_ontology():
 
 
 
+  
+  
+  
+  
+  
 ###############################################################
 #
 #               Asking the Question and Terms Extraction
 #
 ###############################################################
+
 
 
 
@@ -123,7 +129,6 @@ def ask_question():
     # else: if the method is POST
 
     question = request.form["textarea_question"]
-
     global current_question
     current_question = None
     current_question = question
@@ -180,8 +185,10 @@ def ask_question_class():
 
 
 
-
-
+  
+  
+  
+  
 @app.route('/question_key_terms_extraction', methods=['GET', 'POST'])   # KARIM
 def question_key_terms_extraction():
     """
@@ -240,11 +247,15 @@ def question_key_terms_extraction():
     # return render_template("final.html", user_question_key_terms=user_question_key_terms)
     return redirect(url_for("show_mapping_result_clean"))
 
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
 ###########################################
 #
 #               Mapping
@@ -395,6 +406,9 @@ def show_mapping_result_clean():
                            final_mapping=final_mapping)
     """
     return redirect(url_for('query_building'))
+
+  
+  
 
 
 

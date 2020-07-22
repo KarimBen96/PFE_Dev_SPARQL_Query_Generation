@@ -15,6 +15,9 @@ from nltk.tokenize import word_tokenize
 from nltk import ngrams
 from nltk.tokenize import word_tokenize
 from Phases.Ontology_Exploration.Ontology_Exploration import *
+from enum import Enum
+
+
 
 
 
@@ -29,14 +32,11 @@ class Type(Enum):
     DATA_PROPERTY = 3
     ANNOTATION_PROPERTY = 4
 
-
-
-
-
-#
-#               Some Pre-processing before the functions
-#
-
+    
+    
+    
+    
+    
 
 
 #
@@ -111,9 +111,11 @@ def list_to_string(lis):
     return st
 
 
-
+  
+  
+"""
 def ngram_generation(str_question, n_gram):
-    """
+    
     Updated: it returns a list of strings instead of a list of lists
 
     This function generate a list of all the n_grams (of lengh n_gram - the parameter -) and each
@@ -122,7 +124,7 @@ def ngram_generation(str_question, n_gram):
     Parameters:
     - str_question: should be a question in string form but if it is a list ---> will be converted
     - n_gram: number of elements in the n_gram
-    """
+   
 
     if type(str_question) is list:
         question = ''
@@ -134,6 +136,26 @@ def ngram_generation(str_question, n_gram):
     list_ngram = []
     n_grams = ngrams(str_question.split(), n_gram)
     for item in n_grams:
+        list_ngram.append(tuple_to_string(item))
+
+    return list_ngram
+
+"""
+
+
+def ngram_generation(str_question, n_gram):
+
+    if type(str_question) is list:
+        question = ''
+        for item in str_question:
+            question += item + ' '
+        str_question = question[:-1]
+
+    str_question = str_question.lower()
+    list_ngram = []
+    comb = nltk.combinations( str_question.split(), n_gram)
+    #n_grams = ngrams(str_question.split(), n_gram)
+    for item in comb:
         list_ngram.append(tuple_to_string(item))
 
     return list_ngram
@@ -196,15 +218,15 @@ def get_onto_elems_necessary(question_terms, onto):
         if light_rate_list_compare(question_terms, o.processed_name):
             list_onto_elems_necessary.append(o)
 
-    list_onto_elems_necessary_names = []
 
     # for i in onto.onto_elems_list:
     #  list_onto_elems_necessary_names.append(i.name)
 
-    return list_onto_elems_necessary, list_onto_elems_necessary_names
+    return list_onto_elems_necessary
 
 
-
+  
+  
 def get_onto_elems_for_mapping(question_terms, onto_elems_necessary, onto=None):
     """
     Returns a list of dictionaries like:
@@ -238,6 +260,10 @@ def get_onto_elems_for_mapping(question_terms, onto_elems_necessary, onto=None):
 
     return list_dict
 
+  
+  
+  
+  
 
 
 #
@@ -281,7 +307,6 @@ def check_onto_sim_rate(onto_elems_for_mapping, rate):
     return aig, list_return
 
 
-
 def check_biggest_ngram_onto(onto_elems_for_mapping):
     """
     From the (onto_elems_for_mapping) list, it checks and returns the biggest ngrams
@@ -312,15 +337,11 @@ def check_biggest_ngram_onto(onto_elems_for_mapping):
 #
 
 
-
 def mapping_definition(onto_elems_for_mapping):
-    """
 
-    """
 
     list_tempo = onto_elems_for_mapping
     biggest_rate = list_tempo[0]['rate_compare']
-
     a, b = check_onto_sim_rate(list_tempo, 1)
 
     if a:  # if we have rate = 1 or many, we take the biggest n-gram
@@ -339,10 +360,78 @@ def mapping_definition(onto_elems_for_mapping):
             list_final = d
 
         else:  # else, we take all the type class in the top 5
-            list_final = [x for x in top_5 if x['onto_elem'].type == Type.CLASS]
-
+            list_final = [x for x in top_5 if str(x['onto_elem'].type) == str(Type.CLASS)]
             if len(list_final) == 0:  # else, we take all the biggest rates
                 list_final = [x for x in top_5 if x['rate_compare'] == biggest_rate]
 
     return list_final
+
+
+def mapping_listing (onto_elems_for_mapping):
+
+    list_tempo = onto_elems_for_mapping
+    biggest_rate = list_tempo[0]['rate_compare']
+    a, b = check_onto_sim_rate(list_tempo, 1)
+
+    if a:  # if we have rate = 1 or many, we take the biggest n-gram
+        c, d = check_biggest_ngram_onto(b)
+        list_final = d
+        if(str(list_final[0]['onto_elem'].type))==str(Type.CLASS):
+            tag='entity_list'
+        else:
+            tag = 'property_list'
+
+    else:  # else, we take the top 5 and we check for rate = 0.8 or more
+        if len(list_tempo) >= 5:
+            top_5 = list_tempo[:5]
+        else:
+            top_5 = list_tempo
+        a, b = check_onto_sim_rate(list_tempo, 0.8)
+
+        if a:  # if positive, we take them all, it's unlikely to have more than 1
+            c, d = check_biggest_ngram_onto(b)
+            list_final = d
+            if (str(list_final[0]['onto_elem'].type)) == str(Type.CLASS):
+                tag = 'entity_list'
+            else:
+                tag = 'property_list'
+
+        else:  # else, we take all the type class in the top 5
+            list_final = [x for x in top_5 if str(x['onto_elem'].type) == str(Type.CLASS)]
+            if len(list_final) == 0:  # else, we take all the biggest rates
+                list_final = [x for x in top_5 if x['rate_compare'] == biggest_rate]
+                if (str(list_final[0]['onto_elem'].type)) == str(Type.CLASS):
+                    tag = 'entity_list'
+                else:
+                    tag = 'property_list'
+
+    return tag,list_final
+
+
+def mapping_How_complex(onto_elems_for_mapping):
+    list_tempo = onto_elems_for_mapping
+    top_10=list_tempo[:10]
+    list_object=[]
+    list_classe = []
+    list_final=[]
+    for j in top_10:         # we search an oject property IRI
+        if ((str(j['onto_elem'].type) == str(Type.OBJECT_PROPERTY)or str(j['onto_elem'].type) ==str(Type.DATA_PROPERTY))
+        and (j['rate_compare']>=0.8)):
+                list_object.append(j)
+
+        else:  # we search a relation between 2 classes
+                if str(j['onto_elem'].type) == str(Type.CLASS):
+                    list_classe.append(j)
+
+
+    if(len(list_object)!=0):#priority to object properties
+        c, list_final = check_biggest_ngram_onto(list_object)
+        tag = 'How_complex'
+    else:# check the classes
+        if(len(list_classe)>=2):
+            list_final=list_classe
+            tag = 'HObject_property_find'
+
+    return tag,list_final
+
 

@@ -4,12 +4,8 @@
 
 
 
-#
-#               This is the Query Building Phase
-#
 
-
-
+# Query Generator
 def query_builder(label, iri1=None, iri2=None, iri3=None):
     if label == 'definition':
         return definition_query_build(iri1)
@@ -21,8 +17,6 @@ def query_builder(label, iri1=None, iri2=None, iri3=None):
         return object_propoerty_test_build(iri1, iri2, iri3)
     elif label == 'Object_property_find' and iri2 is not None:
         return object_property_find_build1(iri1, iri2)
-    elif label == 'Object_property_find':
-        return object_property_find_build2(iri1)
     elif label == 'property_hierarchy':
         return hierarchy_Property_Property(iri1, iri2)
     elif label == 'Entity_hierarchy':
@@ -32,7 +26,10 @@ def query_builder(label, iri1=None, iri2=None, iri3=None):
     elif label == 'type_belong':
         return Type_Object_Class(iri1, iri2)
 
-
+      
+      
+      
+# Definition Pattern :
 def definition_query_build(iri):
     part1 = f"<{iri}> rdfs:isDefinedBy ?x"
     part2 = f"<{iri}> rdfs:comment ?x"
@@ -40,6 +37,9 @@ def definition_query_build(iri):
     return query
 
 
+  
+
+# Listing Pattern
 def entity_list_query_build(iri):
     cond = f"?x rdfs:subClassOf <{iri}>"
     query = "SELECT ?x WHERE {" + cond + "}"
@@ -52,23 +52,14 @@ def property_list_query_build(iri):
     return query
 
 
+
+  
+  
+#YES / NO  patterns
 def object_propoerty_test_build(prop_iri, iri1, iri2):
     cond1 = f"<{prop_iri}> rdfs:domain <{iri1}>; rdfs:range ?C"
     cond2 = f"?C rdfs:subClassOf <{iri2}> "
     query = "ASK{" + cond1 + "," + cond2 + "}"
-    return query
-
-
-def object_property_find_build1(iri1, iri2):
-    cond1 = f"?x rdfs:domain <{iri1}>; rdfs:range ?C"
-    cond2 = f"?C rdfs:subClassOf <{iri2}> "
-    query = "SELECT ?x WHERE {" + cond1 + ";" + cond2 + "}"
-    return query
-
-
-def object_property_find_build2(iri_prop):
-    cond = f" x? <{iri_prop} ?y >"
-    query = "SELECT ?x y? WHERE{" + cond + "}"
     return query
 
 
@@ -87,6 +78,17 @@ def hierarchy_Property_Property(prop1_iri, prop2_iri):
 def Type_Object_Class(obj_iri, class_iri):
     cond = f'<{obj_iri}> rdfs:Type <{class_iri}>'
     query = "Ask{" + cond + "}"
+    return query
+
+  
+  
+  
+  
+# Complex Pattern :
+def object_property_find_build1(iri1, iri2):
+    cond1 = f"?x rdfs:domain <{iri1}>; rdfs:range ?C"
+    cond2 = f"?C rdfs:subClassOf <{iri2}> "
+    query = "SELECT ?x WHERE {" + cond1 + ";" + cond2 + "}"
     return query
 
 
