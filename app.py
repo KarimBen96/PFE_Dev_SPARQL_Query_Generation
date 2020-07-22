@@ -235,7 +235,7 @@ def question_key_terms_extraction():
     # Here begins the mapping
     # mapping.init_onto_for_mapping()
 
-    current_onto_elems_necessary, lol74 = mapping.get_onto_elems_necessary(current_question_terms, current_ontology)
+    current_onto_elems_necessary = mapping.get_onto_elems_necessary(current_question_terms, current_ontology)
 
     current_onto_elems_for_mapping = mapping.get_onto_elems_for_mapping(current_question_terms,
                                                                         current_onto_elems_necessary)
