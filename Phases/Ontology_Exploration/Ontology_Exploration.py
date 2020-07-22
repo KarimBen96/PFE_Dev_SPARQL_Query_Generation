@@ -36,7 +36,7 @@ class OntologyElement:
 
 
 
-class Ontology:
+class OntologySchema:
     """
 
     """
