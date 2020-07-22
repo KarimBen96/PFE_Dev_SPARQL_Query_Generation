@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.utils import secure_filename
 
 from Phases.Ontology_Exploration import Ontology_Exploration as oe
-from Phases.Question_Classification.Question_Classifiaction import classer_question
 from Phases.Question_Classification import Question_Classifier as qc
 from Phases.Question_Linguistic_Treatments import Question_Linguistic_Treatments as qlt
 from Phases.Mapping import Mapping as mapping
@@ -363,19 +362,10 @@ def show_mapping_result_clean():
 
     select = request.form.getlist('select_user_mapping')
 
-    print('first select:  ' + str(select))
-    print('\n')
-
     user_mapping = build_user_mapping_clean(select, current_onto_elems_necessary)
 
     global final_mapping
     final_mapping = []
-
-    print('current_mapping:  ' + str(current_mapping))
-    print('\n')
-    print('user_mapping:  ' + str(user_mapping))
-    print('\n')
-
 
     for i, j in zip(user_mapping, current_mapping):
 
