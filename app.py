@@ -33,15 +33,20 @@ app.debug = True
 #
 #################################################
 
+
+global current_ontology
+
+
 global current_question
 global current_question_class
 global current_question_terms
 global current_question_ngrams
 
+
+global current_mapping_tag
 global current_onto_elems_necessary
 global current_onto_elems_for_mapping
 global current_mapping
-global current_ontology
 global final_mapping
 
 
@@ -90,6 +95,7 @@ def select_ontology():
     current_ontology = oe.load_ontology(onto_path)
     current_ontology = oe.OntologySchema(oe.build_ontology(current_ontology), 'ontology')
 
+    # time.sleep(2.4)
 
     # return render_template("Select_ontology.html", see_alert=see_alert)
     # return render_template("file_up_successfull.html", file=filename)
@@ -99,11 +105,11 @@ def select_ontology():
 
 
 
-  
-  
-  
-  
-  
+
+
+
+
+
 ###############################################################
 #
 #               Asking the Question and Terms Extraction
@@ -184,10 +190,8 @@ def ask_question_class():
 
 
 
-  
-  
-  
-  
+
+
 @app.route('/question_key_terms_extraction', methods=['GET', 'POST'])   # KARIM
 def question_key_terms_extraction():
     """
@@ -197,6 +201,9 @@ def question_key_terms_extraction():
     global current_question_terms
 
     global current_ontology
+
+    global current_mapping_tag
+    current_mapping_tag = None
 
     global current_mapping
     current_mapping = None
@@ -232,29 +239,28 @@ def question_key_terms_extraction():
         session["list_question_key_terms"] = user_question_key_terms
         current_question_terms = user_question_key_terms
 
-    # Here begins the mapping
-    # mapping.init_onto_for_mapping()
 
     current_onto_elems_necessary = mapping.get_onto_elems_necessary(current_question_terms, current_ontology)
 
     current_onto_elems_for_mapping = mapping.get_onto_elems_for_mapping(current_question_terms,
                                                                         current_onto_elems_necessary)
 
-    current_mapping = mapping.mapping_definition(current_onto_elems_for_mapping)
+    current_mapping_tag, current_mapping = mapping.mapping_function_selector(current_question_class,
+                                                                             current_onto_elems_for_mapping)
 
 
     # return render_template("final.html", user_question_key_terms=user_question_key_terms)
     return redirect(url_for("show_mapping_result_clean"))
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
 ###########################################
 #
 #               Mapping
@@ -337,6 +343,15 @@ def show_mapping_result_clean():
 
     current_mapping_display = copy.deepcopy(current_mapping)
 
+    """
+    print('\n')
+    print('\n')
+    for i in current_mapping:
+        print(i['question_ngram'])
+        print(i['onto_elem'].to_print_onto_elem())
+        print('\n')
+    """
+
 
     for i in current_mapping:
         l_tempo = []
@@ -363,7 +378,8 @@ def show_mapping_result_clean():
 
 
     if request.method == 'GET':
-        return render_template("Mapping/Mapping_result_2.html", current_mapping=current_mapping, mapping_to_display=l)
+        return render_template("Mapping/Mapping_result.html", current_mapping=current_mapping, mapping_to_display=l,
+                               current_mapping_tag=current_mapping_tag, current_question_class=current_question_class)
 
 
 
@@ -387,8 +403,6 @@ def show_mapping_result_clean():
             final_mapping.append(i)
 
 
-    print('final mapping:  ' + str(final_mapping))
-
 
     """
     return render_template("final_for_mapping.html", current_mapping=current_mapping,
@@ -397,8 +411,8 @@ def show_mapping_result_clean():
     """
     return redirect(url_for('query_building'))
 
-  
-  
+
+
 
 
 
@@ -422,11 +436,21 @@ def query_building():
 
     """
 
-    see_alert = False
     global final_mapping
+    global current_mapping_tag
+
+    # current_query = 'SELECT ?x WHERE {{<http://www.UniveyReferenceOntology.org/HERO#Faculty> rdfs:isDefinedBy \n' \
+    #                  '?x} UNION {<http://www.UniversityReferenceOntology.org/HERO#Faculty> rdfs:comment ?x}} '
+
+    msg = 'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n' \
+            'PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>\n' \
+            'PREFIX owl: <http://www.w3.org/2002/07/owl#>\n' \
+            'PREFIX foaf:<http://xmlns.com/foaf/0.1/>\n\n'
+
+    current_query = qb.query_builder(current_mapping_tag, final_mapping)
+
     if request.method == 'GET':
-        fquery = qb.query_builder('definition', final_mapping[0]['onto_elem'].IRI)
-        return render_template("Query_Building/Query_Building.html", see_alert=see_alert, tquery=fquery)
+        return render_template("Query_Building/Query_Building.html", tquery=current_query, msg=msg)
 
 
 

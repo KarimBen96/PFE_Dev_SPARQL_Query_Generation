@@ -31,7 +31,7 @@ light_list_stop_words = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'oursel
                          'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more',
                          'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than',
                          'too', 'very', 's', 't', 'will', 'just', 'don', "don't", 'should', "should've", 'now', 'd',
-                         'll', 'm', 'o', 're', 've', 'y', 'what', 'when', 'where', 'who', 'how', 'why']
+                         'll', 'm', 'o', 're', 've', 'y', 'what', 'when', 'where', 'who', 'how', 'why', 'must']
 
 
 def dict_to_list(dict):

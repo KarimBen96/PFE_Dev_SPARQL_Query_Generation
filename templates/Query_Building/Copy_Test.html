@@ -11,10 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
 	<script src="../../static/js/jquery.min.js"></script>
     <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
-<!--
-    <script src="node_modules/vue-clipboard2/vue-clipboard.js"></script>
-    <script src="node_modules/vue-clipboard2/dist/vue-clipboard.min.js"></script>
--->
+
     <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="../../static/css/Steps-Progressbar.css">
@@ -56,14 +53,9 @@
 	<br>
 
 	<div class="container" id="app">
-        <label for="query"><b>Generated Query</b></label>
-
-        <br>
-        <br>
-
         <div class="alert alert-secondary" id="query" name="query" rows="3"  role="alert">
             <code>
-                PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#><br/>
+                PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#> <br/>
                 PREFIX rdfs:&lt;http://www.w3.org/2000/01/rdf-schema#><br/>
                 PREFIX owl: &lt;http://www.w3.org/2002/07/owl#><br/>
                 PREFIX foaf:&lt;http://xmlns.com/foaf/0.1/><br/><br/>
@@ -74,14 +66,9 @@
         <br>
         <br>
 
-        <button type="button" class="btn btn-secondary" data-clipboard-target="#query">
+        <button class="btn" data-clipboard-target="#query">
             Copy to clipboard
         </button>
-
-        <br>
-        <br>
-
-
     </div>
 
 	<br>
@@ -101,7 +88,9 @@
     <script src="static/clipboard.js-master/dist/clipboard.min.js"></script>
 
     <script>
+
         new ClipboardJS('.btn');
+
     </script>
 
 

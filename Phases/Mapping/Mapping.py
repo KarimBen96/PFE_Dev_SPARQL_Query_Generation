@@ -32,11 +32,11 @@ class Type(Enum):
     DATA_PROPERTY = 3
     ANNOTATION_PROPERTY = 4
 
-    
-    
-    
-    
-    
+
+
+
+
+
 
 
 #
@@ -111,8 +111,7 @@ def list_to_string(lis):
     return st
 
 
-  
-  
+
 """
 def ngram_generation(str_question, n_gram):
     
@@ -164,7 +163,7 @@ def ngram_generation(str_question, n_gram):
 
 def rate_list_compare(list_1, list_2, nlp=nlp):
     """
-
+    Checks the percentage of similarity between 2 lists of strings
     """
 
     rate = 0
@@ -225,8 +224,7 @@ def get_onto_elems_necessary(question_terms, onto):
     return list_onto_elems_necessary
 
 
-  
-  
+
 def get_onto_elems_for_mapping(question_terms, onto_elems_necessary, onto=None):
     """
     Returns a list of dictionaries like:
@@ -260,10 +258,10 @@ def get_onto_elems_for_mapping(question_terms, onto_elems_necessary, onto=None):
 
     return list_dict
 
-  
-  
-  
-  
+
+
+
+
 
 
 #
@@ -307,6 +305,7 @@ def check_onto_sim_rate(onto_elems_for_mapping, rate):
     return aig, list_return
 
 
+
 def check_biggest_ngram_onto(onto_elems_for_mapping):
     """
     From the (onto_elems_for_mapping) list, it checks and returns the biggest ngrams
@@ -315,7 +314,6 @@ def check_biggest_ngram_onto(onto_elems_for_mapping):
 
     """
 
-    len_ngram = 0
     list_return = []
 
     a = 0
@@ -332,13 +330,23 @@ def check_biggest_ngram_onto(onto_elems_for_mapping):
 
 
 
+
+
+
+
+
+
+
 #
 #               Mapping Functions
 #
 
 
-def mapping_definition(onto_elems_for_mapping):
 
+def mapping_definition(onto_elems_for_mapping):
+    """
+
+    """
 
     list_tempo = onto_elems_for_mapping
     biggest_rate = list_tempo[0]['rate_compare']
@@ -363,11 +371,14 @@ def mapping_definition(onto_elems_for_mapping):
             list_final = [x for x in top_5 if str(x['onto_elem'].type) == str(Type.CLASS)]
             if len(list_final) == 0:  # else, we take all the biggest rates
                 list_final = [x for x in top_5 if x['rate_compare'] == biggest_rate]
-    tag="definition"
-    return tag,list_final
+
+    tag = "definition"
+
+    return tag, list_final
 
 
-def mapping_listing (onto_elems_for_mapping):
+
+def mapping_listing(onto_elems_for_mapping):   # ADEL
 
     list_tempo = onto_elems_for_mapping
     biggest_rate = list_tempo[0]['rate_compare']
@@ -376,8 +387,9 @@ def mapping_listing (onto_elems_for_mapping):
     if a:  # if we have rate = 1 or many, we take the biggest n-gram
         c, d = check_biggest_ngram_onto(b)
         list_final = d
-        if(str(list_final[0]['onto_elem'].type))==str(Type.CLASS):
-            tag='entity_list'
+
+        if str(list_final[0]['onto_elem'].type) == str(Type.CLASS):
+            tag = 'entity_list'
         else:
             tag = 'property_list'
 
@@ -400,89 +412,118 @@ def mapping_listing (onto_elems_for_mapping):
             list_final = [x for x in top_5 if str(x['onto_elem'].type) == str(Type.CLASS)]
             if len(list_final) == 0:  # else, we take all the biggest rates
                 list_final = [x for x in top_5 if x['rate_compare'] == biggest_rate]
-                if (str(list_final[0]['onto_elem'].type)) == str(Type.CLASS):
+                if str(list_final[0]['onto_elem'].type) == str(Type.CLASS):
                     tag = 'entity_list'
                 else:
                     tag = 'property_list'
 
-    return tag,list_final
+    return tag, list_final
 
 
-def mapping_How_complex(onto_elems_for_mapping):
+
+def mapping_how_complex(onto_elems_for_mapping):   # ADEL
+    """
+
+    """
+
     list_tempo = onto_elems_for_mapping
-    top_10=list_tempo[:10]
-    list_object=[]
-    list_classe = []
-    list_final=[]
+    top_10 = list_tempo[:10]
+    list_object = []
+    list_class = []
+    list_final = []
+
     for j in top_10:         # we search an oject property IRI
-        if ((str(j['onto_elem'].type) == str(Type.OBJECT_PROPERTY)or str(j['onto_elem'].type) ==str(Type.DATA_PROPERTY))
-        and (j['rate_compare']>=0.8)):
-                list_object.append(j)
+
+        if ((str(j['onto_elem'].type) == str(Type.OBJECT_PROPERTY)
+             or str(j['onto_elem'].type) == str(Type.DATA_PROPERTY)
+             or (str(j['onto_elem'].type) == str(Type.ANNOTATION_PROPERTY)))
+                and (j['rate_compare'] >= 0.8)):
+
+            list_object.append(j)
 
         else:  # we search a relation between 2 classes
-                if str(j['onto_elem'].type) == str(Type.CLASS):
-                    list_classe.append(j)
+            if str(j['onto_elem'].type) == str(Type.CLASS):
+                list_class.append(j)
 
 
-    if(len(list_object)!=0):#priority to object properties
+    if len(list_object) != 0:    # priority to object properties
         c, list_final = check_biggest_ngram_onto(list_object)
         tag = 'How_complex'
-    else:# check the classes
-        if(len(list_classe)>=2):
-            list_final=list_classe
+    else:                        # check the classes
+        if len(list_class) >= 2:
+            list_final = list_class
             tag = 'HObject_property_find'
 
-    return tag,list_final
+    return tag, list_final
 
 
-#Adel
-def mapping_yesno(onto_elems_for_mapping):
+
+def mapping_yesno(onto_elems_for_mapping):   # ADEL
+    """
+
+    """
+
     list_tempo = onto_elems_for_mapping
     top_5 = list_tempo[:5]
-    list_classes=[]
-    list_obj=[]
-    tag=''
-    #I initialzed it like this so that I can affect the list elements one by one ( statement else)
-    list_final=['','','']
-    for i in top_5:#searching for hierarchy
+    list_classes = []
+    list_obj = []
+
+    # I initialzed it like this so that I can affect the list elements one by one (statement else)
+    list_final = ['', '', '']
+
+    for i in top_5:         # looking for hierarchy
         if str(i['onto_elem'].type) == str(Type.CLASS):
             list_classes.append(i)
         else:
             list_obj.append(i)
-    cond=False
-    #Cond to verify the or statement in elif
-    for i in list_classes:
-        if i['rate_compare'] < 0.8:
-            cond=True
 
-    # searching for hierarchy entity  # wi verify list object [0] because it's sorted
-    if len(list_obj)==0 or(list_obj[0]['rate_compare']<0.8):
-        tag='Entity_hierarchy'
-        list_final=list_classes
-    #property hierarchy
-    elif len(list_classes)==0 or cond==True:
-        tag='property_hierarchy'
-        list_final=list_obj
+    cond = True
+
+    # Cond to verify the or statement in elif
+    for i in list_classes:
+        if i['rate_compare'] >= 0.8:
+            cond = False
+
+    # Looking for hierarchy entity, we verify list_obj[0] because it's sorted
+    if len(list_obj) == 0 or (str(list_obj[0]['onto_elem'].type)) != str(Type.OBJECT_PROPERTY):
+        tag = 'Entity_hierarchy'
+        list_final = list_classes[:2]
+
+    # property hierarchy
+    elif len(list_classes) == 0 or cond:
+        tag = 'property_hierarchy'
+        list_final = list_obj[:2]
+
     else:
         tag = 'Object_property_test'
-        list_final[0]= list_obj[0]
-        list_final[1]=list_classes[0]
-        list_final[2]=list_classes[1]
+        list_final[0] = list_obj[0]
+        list_final[1] = list_classes[0]
+        list_final[2] = list_classes[1]
 
 
-    return tag,list_final
+    return tag, list_final
+
+
 
 
 #
 #               Mapping Function Selector
-# Adel
-def mapping_function_selector(label,onto_elems_for_mapping):
-    if(label=='Definition'):
-        tag,mapped_list=mapping_definition(onto_elems_for_mapping)
-    elif(label=='List'):
+#
+
+
+
+def mapping_function_selector(label_, onto_elems_for_mapping):   # ADEL
+    """
+
+    """
+
+    if label_ == 'Definition':
+        tag,mapped_list = mapping_definition(onto_elems_for_mapping)
+    elif label_ == 'List':
         tag,mapped_list = mapping_listing(onto_elems_for_mapping)
-    elif(label =='Complex'):
-        tag,mapped_list = mapping_How_complex(onto_elems_for_mapping)
-    elif (label == 'Yes / No'):
+    elif label_ == 'Complex':
+        tag,mapped_list = mapping_how_complex(onto_elems_for_mapping)
+    elif label_ == 'Yes / No':
         tag, mapped_list = mapping_yesno(onto_elems_for_mapping)
-    return tag,mapped_list
+
+    return tag, mapped_list

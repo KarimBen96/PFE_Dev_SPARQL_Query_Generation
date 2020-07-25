@@ -1,9 +1,74 @@
 PREDICTED    CORRECT      QUESTION
 Definition   Complex      how is a techer tenured
 Definition   Definition   what is the definition of pizza
-<<<<<<< HEAD
 List         List         what are the different types of pizza
 List         List         what are the different types of pizza ?
-=======
 Definition   Complex      how is a teacher evaluated ?
->>>>>>> 0af578f1dd77841383c24dd7cee78e610e350968
+Definition   Complex      how can a student become a doctor
+Definition   Complex      how can a student graduate into a doctor
+List         List         what are the types of degree
+List         List         what are the types of a degree
+Yes / No     Yes / No     can a teacher be a researcher
+Definition   Definition   What is a Credit? 
+Definition   Definition   What is a Credit? 
+Yes / No     Yes / No     Must a university teacher be a researcher?
+List         List         What are the possible
+academic ranks of a
+teacher?
+
+Complex      Complex      Why universities are organized into departments?
+
+Complex      Complex      Why universities are organized into departments?
+
+List         List         what are the criteria to become an undergraduate student advisor?
+List         List         what services are provided by the campus?
+Definition   Definition   what is a campus?
+List         List         what services are provided by the campus?
+List         List         what services are provided by the campus?
+List         List         what higher education admission criteria are required?
+
+List         List         what are the categories of a course
+List         List         what possible values have grades
+List         List         what are course session types
+Definition   Definition   how is a teacher evaluated
+Definition   Complex      how is a teacher evaluated
+List         List         what are research publication categories
+Definition   Definition   what is the role of administration staff 
+Definition   Definition   what is the role of the administrative staff 
+List         Definition   what financial incomes have higher education institutions
+List         List         what financial incomes have higher education institutions
+Definition   Definition   What is a Credit?
+Yes / No     Yes / No     Must a university teacher be a researcher?
+Yes / No     Yes / No     Must a university teacher be a researcher?
+Yes / No     Yes / No     Must a university teacher be a researcher?
+Yes / No     Yes / No     Must a university teacher be a researcher?
+Yes / No     Yes / No     Must a university teacher be a researcher?
+Yes / No     Yes / No     must a university teacher be a researcher?
+
+Yes / No     Yes / No     Must a teacher be affiliated to a laboratory
+Yes / No     Yes / No     Must a teacher be affiliated to a laboratory
+Complex      Complex      Why universities are organized into departments?
+Complex      Complex      Why universities are organized into departments?
+List         List         what services are provided by the campus
+List         List         what higher education admission criteria are required?
+Definition   Definition   what is the role of administrative staff
+List         List         what financial incomes have higher education institutions
+Definition   Definition   what financial incomes does university have
+Definition   Definition   what is the faculty
+Definition   Definition   what is a faculty
+List         Definition   what faculty
+Definition   Definition   what is a university admission
+List         Definition   what faculty
+List         Definition   WHAT FACULTY
+Yes / No     Definition   faculty
+List         Definition   what faculty
+Yes / No     Definition   faculty
+Definition   Definition   what is an associate professor
+
+Definition   Definition   what is an associate professor
+Yes / No     Definition   be faculty
+Definition   Definition   how can we describe an associate professor
+Definition   Definition   what is a university college
+Definition   Definition   how to describe the college
+Yes / No     Definition   wat college
+Yes / No     Yes / No     can a student be a teacher

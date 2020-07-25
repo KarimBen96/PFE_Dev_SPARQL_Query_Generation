@@ -7,6 +7,11 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/node_modules/clipboard" />
+    <content url="file://$MODULE_DIR$/node_modules/delegate" />
+    <content url="file://$MODULE_DIR$/node_modules/good-listener" />
+    <content url="file://$MODULE_DIR$/vue-clipboard2-master" />
+    <content url="file://$MODULE_DIR$/vue-clipboard2-master/dist" />
     <orderEntry type="jdk" jdkName="Python 3.7 (PFE_Dev_Env) (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
