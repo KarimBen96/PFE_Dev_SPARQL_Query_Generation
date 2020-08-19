@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Automatic Mode</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+	<script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="../../static/css/Steps-Progressbar.css">
+    <link rel="stylesheet" href="../../static/css/styles.css">
+</head>
+
+<body>
+
+    <div id="app_1">
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="background-color:rgb(255,0,0);">
+            <div class="container"><a class="navbar-brand" href="#" style="color:#ffffff;">SPARQL Translator</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                        class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" href="{{ url_for('choose_mode') }}" style="color:rgb(255,255,255);">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" href="#" style="color:rgb(255,255,255);">
+                                What is SPARQL translator
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown"
+                                                aria-expanded="false" href="#" style="color:rgb(255,255,255);">
+                                Contact
+                            </a>
+                            <div class="dropdown-menu" role="menu">
+                                <a class="dropdown-item" role="presentation" href="#">
+                                    Karim BENHOCINE - fk_ben_hocine@esi.dz
+                                </a>
+                                <a class="dropdown-item" role="presentation" href="#">
+                                    Adel HANSALI - ea_hansali@esi.dz
+                                </a>
+                                <a class="dropdown-item" role="presentation" href="#">
+                                    Leila GHOMARI - leila.ghomari@enst.dz
+                                </a>
+                                <a class="dropdown-item" role="presentation" href="#">
+                                    Abdessamad Réda GHOMARI - a_ghomari@esi.dz
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <span class="navbar-text actions"> </span>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+		<form action="{{ url_for('automatic_mode_question') }}" method="post">
+			<div class="form-group">
+                <label for="textarea_question"><b>Introduce your question</b></label>
+                <br>
+    			<textarea class="form-control" id="textarea_question" name="textarea_question" rows="3" placeholder="Your Question..."></textarea>
+  			</div>
+            <br>
+			<button type="submit" class="btn btn-danger">Submit</button>
+			<button type="reset" class="btn btn-secondary">Reset</button>
+		</form>
+    </div>
+
+    <br>
+    <br>
+
+
+
+
+
+
+
+
+    <!--
+                            SCRIPTS FOR JAVASCRIPT AND VUE JS
+
+    -->
+
+    <script src="static/clipboard.js-master/dist/clipboard.min.js"></script>
+
+    <script>
+        new ClipboardJS('.btn');
+    </script>
+
+</body>
+</html>

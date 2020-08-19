@@ -45,7 +45,8 @@ def definition_query_build(iri):
 
     part1 = f"<{iri}> rdfs:isDefinedBy ?x"
     part2 = f"<{iri}> rdfs:comment ?x"
-    query = "SELECT ?x WHERE {{" + part1 + "} UNION {" + part2 + "}}"
+    part3 = f"<{iri}> skos:definition ?x"
+    query = "SELECT ?x WHERE {{" + part1 + "} UNION {" + part3 + "} UNION {"+part2+"}}"
     return query
 
 
@@ -59,20 +60,16 @@ def definition_query_build(iri):
 
 
 def entity_list_query_build(iri):
-    """
-    """
-
     cond = f"?x rdfs:subClassOf <{iri}>"
-    query = "SELECT ?x WHERE {" + cond + "}"
+    part2 = f"<{iri}> rdfs:comment ?x"
+    query = "SELECT ?x WHERE {{" + cond + "} UNION {" + part2 + "}}"
     return query
 
 
 def property_list_query_build(iri):
-    """
-    """
-
     cond = f"?x rdfs:subPropertyOf <{iri}>"
-    query = "SELECT ?x WHERE {" + cond + "}"
+    part2 = f"<{iri}> rdfs:comment ?x"
+    query = "SELECT ?x WHERE {{" + cond + "} UNION {" + part2 + "}}"
     return query
 
 
@@ -86,40 +83,29 @@ def property_list_query_build(iri):
 
 
 def object_propoerty_test_build(prop_iri, iri1, iri2):
-    """
-    """
-
     cond1 = f"<{prop_iri}> rdfs:domain <{iri1}>; rdfs:range ?C"
     cond2 = f"?C rdfs:subClassOf <{iri2}> "
-    query = "ASK{" + cond1 + "} UNION {" + cond2 + "}"
+    query = "ASK{" + cond1 + "," + cond2 + "}"
     return query
 
 
 def hierarchy_Class_Class(class1_iri, class2_iri):
-    """
-    """
-
     cond = f"<{class1_iri}> rdfs:subClassOf <{class2_iri}>"
     query = "Ask{" + cond + "}"
     return query
 
 
 def hierarchy_Property_Property(prop1_iri, prop2_iri):
-    """
-    """
-
     cond = f'<{prop1_iri}> rdfs:subPropertyOf <{prop2_iri}>'
     query = "Ask{" + cond + "}"
     return query
 
 
 def Type_Object_Class(obj_iri, class_iri):
-    """
-    """
-
     cond = f'<{obj_iri}> rdfs:Type <{class_iri}>'
     query = "Ask{" + cond + "}"
     return query
+
 
   
   
@@ -132,9 +118,6 @@ def Type_Object_Class(obj_iri, class_iri):
 
 
 def object_property_find_build1(iri1, iri2):
-    """
-    """
-
     cond1 = f"?x rdfs:domain <{iri1}>; rdfs:range ?C"
     cond2 = f"?C rdfs:subClassOf <{iri2}> "
     query = "SELECT ?x WHERE {" + cond1 + ";" + cond2 + "}"
@@ -142,9 +125,6 @@ def object_property_find_build1(iri1, iri2):
 
 
 def how_complex_build(prop_iri):
-    """
-    """
-
     cond1 = f'<{prop_iri}> rdfs:domain ?x ; rdfs:range ?y'
     cond2 = f'<{prop_iri}> rdfs:comment  ?z'
     query = "SELECT ?x ?y ?z WHERE {{" + cond1 + " } UNION {" + cond2 + "}}"

@@ -3,6 +3,8 @@ import os
 
 import numpy
 import pandas
+import re
+
 
 import en_core_web_sm
 
@@ -214,6 +216,7 @@ def classer_question(question_):
     """
 
     classes = ["Definition", 'Yes / No', 'List', "Complex"]
+
 
     if check_yes_no_class(question_):
         return classes[1]

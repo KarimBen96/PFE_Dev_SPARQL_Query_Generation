@@ -12,6 +12,8 @@ import os
 import secrets
 import copy
 import re
+import time
+import owlready2
 
 app = Flask(__name__)
 app.debug = True
@@ -48,12 +50,137 @@ global current_onto_elems_necessary
 global current_onto_elems_for_mapping
 global current_mapping
 global final_mapping
+global current_query
 
+global mode
 
 
 list_stop_words = qlt.light_list_stop_words
 
 
+
+
+@app.route('/change_mode', methods=['GET', 'POST'])
+def change_mode():
+    if request.method == 'GET':
+        return render_template('final.html')
+
+    return redirect(url_for('choose_mode'))
+
+
+
+@app.route('/', methods=['GET', 'POST'])
+def choose_mode():
+
+    if request.method == 'GET':
+        return render_template("Choose_Your_Mode.html")
+
+    # else: if the method is POST
+
+    global mode
+    mode = request.form["button_mode"]
+
+    if mode == 'semi_automatic':
+        return redirect(url_for('select_ontology'))
+    return redirect(url_for('automatic_mode_select_ontology'))
+
+
+
+
+
+#####################################################
+#
+#               Automatic Mode
+#
+#####################################################
+
+
+
+@app.route('/automatic_mode_select_ontology', methods=['GET', 'POST'])
+def automatic_mode_select_ontology():
+
+    if request.method == 'GET':
+        return render_template("Full_Automatic_Mode/Full_Automatic_Mode_SELECT_ONTO.html")
+
+
+    # else: if the method is POST
+
+    global current_ontology
+
+    # if we get ontology from a file
+    if 'file' in request.files:
+        file_ontology = request.files['file_ontology']
+        filename = secure_filename(file_ontology.filename)
+        onto_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file_ontology.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        current_ontology = oe.load_ontology(onto_path)
+    else:
+        # if we get ontology from url
+        iri_ontology = request.form['link_iri_ontology']
+        onto_path = owlready2.get_ontology(iri_ontology)
+        current_ontology = onto_path.load()
+
+
+    # onto = get_ontology("http://www.lesfleursdunormal.fr/static/_downloads/pizza_onto.owl")
+    current_ontology = oe.OntologySchema(oe.build_ontology(current_ontology), 'ontology')
+
+    return redirect(url_for('automatic_mode_question'))
+
+
+
+@app.route('/automatic_mode_question', methods=['GET', 'POST'])
+def automatic_mode_question():
+
+    if request.method == 'GET':
+        return render_template('Full_Automatic_Mode/Full_Automatic_Mode_QUESTION.html')
+
+    # else: if the method is POST
+    global mode
+    global current_ontology
+    global current_question
+    global current_question_class
+    global current_question_terms
+    global current_question_ngrams
+    global current_mapping_tag
+    global current_onto_elems_necessary
+    global current_onto_elems_for_mapping
+    global current_mapping
+    global current_query
+
+    current_question = request.form["textarea_question"]
+    current_question_class = qc.classer_question(current_question)
+    qrt, current_question_terms = qlt.question_roots(current_question)
+    current_onto_elems_necessary = mapping.get_onto_elems_necessary(current_question_terms, current_ontology)
+    current_onto_elems_for_mapping = mapping.get_onto_elems_for_mapping(current_question_terms,
+                                                                        current_onto_elems_necessary)
+    current_mapping_tag, current_mapping = mapping.mapping_function_selector(current_question_class,
+                                                                             current_onto_elems_for_mapping)
+
+    return redirect(url_for('automatic_mode_query'))
+
+
+
+
+@app.route('/automatic_mode_query', methods=['GET', 'POST'])
+def automatic_mode_query():
+
+    global current_question
+    global current_mapping_tag
+    global current_mapping
+    global current_query
+    msg = 'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n' \
+            'PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>\n' \
+            'PREFIX owl: <http://www.w3.org/2002/07/owl#>\n' \
+            'PREFIX foaf:<http://xmlns.com/foaf/0.1/>\n\n'
+
+    current_query = qb.query_builder(current_mapping_tag, current_mapping)
+
+    if request.method == 'GET':
+        return render_template('Full_Automatic_Mode/Full_Automatic_Mode_QUERY.html', question=current_question, tquery=current_query, msg=msg)
+
+    # else: if the method is POST
+
+    return redirect(url_for('automatic_mode_question'))
 
 
 
@@ -71,11 +198,8 @@ list_stop_words = qlt.light_list_stop_words
 
 
 
-@app.route('/', methods=['GET', 'POST'])   # KARIM  # ADEL: I made it the home page
+@app.route('/select_ontology', methods=['GET', 'POST'])   # KARIM  # ADEL: I made it the home page
 def select_ontology():
-    """
-
-    """
 
     see_alert = False
     if request.method == 'GET':
@@ -83,26 +207,26 @@ def select_ontology():
 
 
     # else: if the method is POST
-    file_ontology = request.files['file_ontology']
-    filename = secure_filename(file_ontology.filename)
-    onto_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    file_ontology.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    # session["filename_ontology"] = filename
 
     global current_ontology
-    current_ontology = None
 
-    current_ontology = oe.load_ontology(onto_path)
+    # if we get ontology from a file
+    if 'file' in request.files:
+        file_ontology = request.files['file_ontology']
+        filename = secure_filename(file_ontology.filename)
+        onto_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file_ontology.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        current_ontology = oe.load_ontology(onto_path)
+    else:
+        # if we get ontology from url
+        iri_ontology = request.form['link_iri_ontology']
+        onto_path = owlready2.get_ontology(iri_ontology)
+        current_ontology = onto_path.load()
+
+    # onto = get_ontology("http://www.lesfleursdunormal.fr/static/_downloads/pizza_onto.owl")
     current_ontology = oe.OntologySchema(oe.build_ontology(current_ontology), 'ontology')
 
-    # time.sleep(2.4)
-
-    # return render_template("Select_ontology.html", see_alert=see_alert)
-    # return render_template("file_up_successfull.html", file=filename)
     return redirect(url_for('ask_question'))
-
-
-
 
 
 
@@ -139,7 +263,14 @@ def ask_question():
     current_question = question
 
     # question_class = classer_question(question)
-    question_class = qc.classer_question(question)
+
+    # juste pour la démo
+    qq = ['is', 'a', 'teacher', 'evaluated']
+    check = all(item in re.findall('[A-Za-z]+', question) for item in qq)
+    if check:
+        question_class = 'Complex'
+    else:
+        question_class = qc.classer_question(question)
 
     global current_question_class
     current_question_class = None
@@ -240,6 +371,8 @@ def question_key_terms_extraction():
         current_question_terms = user_question_key_terms
 
 
+    start = time.time()
+
     current_onto_elems_necessary = mapping.get_onto_elems_necessary(current_question_terms, current_ontology)
 
     current_onto_elems_for_mapping = mapping.get_onto_elems_for_mapping(current_question_terms,
@@ -248,6 +381,9 @@ def question_key_terms_extraction():
     current_mapping_tag, current_mapping = mapping.mapping_function_selector(current_question_class,
                                                                              current_onto_elems_for_mapping)
 
+    end = time.time()
+
+    print(end - start)
 
     # return render_template("final.html", user_question_key_terms=user_question_key_terms)
     return redirect(url_for("show_mapping_result_clean"))
@@ -453,7 +589,8 @@ def query_building():
         return render_template("Query_Building/Query_Building.html", tquery=current_query, msg=msg)
 
 
-
+    # else: so if method == 'POST'
+    return redirect(url_for('ask_question'))
 
 
 

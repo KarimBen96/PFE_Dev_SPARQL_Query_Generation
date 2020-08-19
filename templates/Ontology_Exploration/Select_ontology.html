@@ -23,28 +23,52 @@
 
 </head>
 
+
+
 <body>
-<div id="app_1">
+<div id="">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="background-color:rgb(62,153,237);">
         <div class="container"><a class="navbar-brand" href="#" style="color:#ffffff;">SPARQL Translator</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
-                    class="navbar-toggler-icon"></span></button>
-            <div
-                    class="collapse navbar-collapse" id="navcol-1">
+                    class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#"
-                                                                style="color:rgb(255,255,255);">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#"
-                                                                style="color:rgb(255,255,255);">What is SPARQL
-                        translator</a></li>
-                    <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown"
-                                            aria-expanded="false" href="#" style="color:rgb(255,255,255);">Contact</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First
-                            Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a
-                                class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="{{ url_for('choose_mode') }}" style="color:rgb(255,255,255);">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="#" style="color:rgb(255,255,255);">
+                            What is SPARQL translator
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown"
+                                            aria-expanded="false" href="#" style="color:rgb(255,255,255);">
+                            Contact
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item" role="presentation" href="#">
+                                Karim BENHOCINE - fk_ben_hocine@esi.dz
+                            </a>
+                            <a class="dropdown-item" role="presentation" href="#">
+                                Adel HANSALI - ea_hansali@esi.dz
+                            </a>
+                            <a class="dropdown-item" role="presentation" href="#">
+                                Leila GHOMARI - leila.ghomari@enst.dz
+                            </a>
+                            <a class="dropdown-item" role="presentation" href="#">
+                                Abdessamad Réda GHOMARI - a_ghomari@esi.dz
+                            </a>
+                        </div>
                     </li>
                 </ul>
-                <span class="navbar-text actions"> </span></div>
+                <span class="navbar-text actions"> </span>
+            </div>
+
         </div>
     </nav>
 </div>
@@ -66,7 +90,7 @@
 <br>
 
 <div class="container" id="app_3">
-    <form action="">
+    <form action="{{ url_for('select_ontology') }}" method="post">
         <div class="form-control">
             <h5>Insert ontology IRI</h5>
             <br>

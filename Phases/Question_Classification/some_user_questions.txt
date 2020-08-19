@@ -72,3 +72,132 @@ Definition   Definition   what is a university college
 Definition   Definition   how to describe the college
 Yes / No     Definition   wat college
 Yes / No     Yes / No     can a student be a teacher
+Definition   Definition   What is the definition of an associate professor?
+List         List         What caracteristices have community colleges?
+List         List         What caracteristics have community colleges?
+List         List         what are higher education institutions accreditation types?
+List         List         what are higher education institutions accreditation types?
+Definition   Definition   what is the faculty?
+Definition   Definition   what is a professor
+Definition   Definition   what is a professor
+Definition   Definition   what is faculty
+Definition   Definition   what is faculty
+Definition   Definition   what is faculty
+Definition   Definition   what is the faculty
+List         List         what are course session types
+Definition   Complex      how is a teacher evaluated
+Complex      Complex      how is a teacher evaluated
+Yes / No     Yes / No     can a teacher become a professor??
+Yes / No     Yes / No     can a teacher become a full professor
+Yes / No     Yes / No     can a teacher be a researcher
+Definition   Definition   What is the definition of an associate professor
+List         List         What are the possible academic ranks of a teacher?
+List         List         What are the possible academic ranks of a teacher
+List         List         What are the competency domains of a teacher
+Yes / No     Yes / No     Must a university teacher be a researcher
+Definition   Complex      What is expected from university teachers
+Yes / No     Yes / No     Does a teacher belong to a research laboratory
+Definition   Definition   What is a research group
+Definition   Definition   What does mean a research university work 
+Definition   Definition   What is the faculty
+Complex      Complex      How is a teacher hired
+Complex      Complex      How is a teacher evaluated
+Complex      Complex      How is a teacher tenured
+Definition   Definition   What is the definition of a lecturer
+Definition   Definition   What is the definition of an instructor
+Definition   Definition   What is the definition of an adjunct assistant
+Definition   Definition   What is the definition of a postdoc
+Definition   Definition   What is the definition of a post doc
+Definition   Definition   What is the definition of a full professor
+Definition   Definition   What is the definition of a professor Emeritus
+Complex      Complex      How many research groups must a laboratory contain at least
+List         List         What are research publication categories
+List         List         What are the criteria to become an undergraduate student advisor (
+List         List         What are the criteria to become a student supervisor
+Definition   Definition   Who has to plan for the schedule of the semester
+Definition   Definition   What does mean student tuition
+List         List         What financial incomes have higher education institutions
+Definition   Definition   What is the definition of an assistant professor
+Definition   Definition   What is the definition of an associate professor
+List         List         What are the criteria to become a graduate student advisor
+Definition   Definition   What is the role of an administration staff
+Definition   Definition   What is the role of an administrative staff
+List         List         What are the criteria needed to be taken into account to appoint a dean
+List         List         What roles and responsibilities have a dean 
+List         List         What roles and responsibilities have a dean 
+Definition   Definition   What roles does a dean have
+Complex      Complex      How is a typical university organized
+Definition   Definition   What is the role of a university president
+Complex      Complex      Why are universities organized into departments
+List         List         What responsibilities do the departments chairs in the life of an institution have
+Definition   Definition   Who has the responsibility to appoint the members of the governing board
+List         List         What average size does governing board have
+Complex      Complex      How is chosen a president of a university
+List         List         What criteria can be taken into account to generate different classifications of higher education institutions
+Complex      Complex      How is chosen a president of a university
+List         List         What criteria can be taken into account to generate different classifications of higher education institutions
+List         List         What higher education institutions categories are there according to the criterion of the highest degree granted
+Definition   Definition   What is the most common degree
+Definition   Definition   What is a typical undergraduate curriculum 
+Definition   Definition   What is a course
+List         List         What are the courses’ categories
+Definition   Definition   What is the definition of a module? 
+List         List         What high education degrees exist
+Complex      Complex      How many years are necessary to obtain these degrees 
+Complex      Complex      How is organized the academic year 
+List         List         What types of grading are there 
+Complex      Complex      How are students evaluated
+Definition   Definition   What is a course program
+Yes / No     Yes / No     Do all associate degrees lead to bachelor’s degrees
+List         List         What are articulation agreements
+Definition   Definition   What is the process to earn a doctorate degree
+List         List         What differences are there between: certificate, diploma
+Yes / No     Yes / No     Is a vocational training diploma considered as higher education degree
+Complex      Complex      How are students organized in discussion sessions
+Definition   Definition   What is the most popular type of institution
+List         List         What characteristics do community college have
+Definition   Definition   What is the impact of the government on higher education institutions governance 
+Definition   Definition   What is the role of the accreditation
+List         List         Who are accreditors 
+List         List         What are higher education institutions accreditation types 
+Complex      Complex      How is commonly called each year of the four years study formula
+List         List         What conditions international students have to fulfil to be enrolled by US higher education institutions
+List         List         What university admission criteria are required 
+List         List         What possible forms of governmental financial aid are provided to students
+Definition   Definition   What is a course
+List         List         What are the possible academic ranks of a teacher
+Definition   Definition   What is the definition of an assistant professor
+Definition   Definition   What is the definition of an assistant professor 
+Definition   Definition   what is a teacher
+List         List         what are the possible academic ranks of a professor
+List         List         what are the possible academic ranks of a professor
+List         List         What are the possible academic ranks of a teacher
+List         List         What characteristics do community college have
+List         List         what are the different pizza toppings
+List         List         what are the possible toppings for a pizza
+List         List         what are the channels of perception in animals
+List         List         what are the channels of perception
+Definition   Definition   what is a topping of pizza?
+List         List         what are the possible pizza toppings ?
+List         List         what are the possible perception channels for an animal?
+Complex      Complex      Why are universities organized into departments
+List         List         What average size and duration have governing board 
+List         List         What financial incomes have higher education institutions
+List         List         What higher education admission criteria are required 
+List         List         What possible forms of governmental financial aid are provided to students
+Definition   Definition   What is a typical undergraduate curriculum
+Complex      Complex      How is organized the academic year 
+Complex      Complex      How are students organized in discussion sessions
+List         List         What characteristics do community college have
+Definition   Definition   what an a assistant professor
+Definition   Definition   what an a assistant professor
+Definition   Definition   what an a assistant professor
+Definition   Definition   what an a assistant professor
+Complex      Complex      how can a teacher be evaluated
+Definition   Definition   what is a professor
+Definition   Definition   What is the faculty?
+Definition   Definition   What is the faculty?
+Definition   Definition   What is the faculty?
+Definition   Definition   What is the faculty?
+List         List         What are the pizza toppings?
+

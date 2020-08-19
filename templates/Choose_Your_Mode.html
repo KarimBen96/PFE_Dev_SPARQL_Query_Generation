@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose Mode</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+	<script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="../../static/css/Steps-Progressbar.css">
+    <link rel="stylesheet" href="../../static/css/styles.css">
+
+</head>
+
+<body>
+
+    <div>
+        <br>
+        <br>
+        <br>
+        <h1 style="text-align:center">Welcome to SPARQL Translator</h1>
+
+
+        <form action="{{ url_for('choose_mode') }}" method="post">
+
+            <button type="button submit" class="btn btn-primary btn-lg"
+                    style="position: absolute; left: 640px; bottom: 450px; height: 80px; width: 280px"
+                    value="semi_automatic" name="button_mode">
+                Expert Mode
+                <!--
+                Semi Automatic Mode
+                -->
+            </button>
+
+            <button type="button submit" class="btn btn-danger btn-lg"
+                    style="position: absolute; left: 640px; bottom: 350px; height: 80px; width: 280px"
+                    value="full_automatic" name="button_mode">
+                User Mode
+                <!--
+                Full Automatic Mode
+                -->
+            </button>
+
+        </form>
+    </div>
+
+
+</body>
+</html>

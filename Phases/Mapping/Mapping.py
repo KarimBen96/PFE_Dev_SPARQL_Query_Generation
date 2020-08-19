@@ -383,6 +383,7 @@ def mapping_listing(onto_elems_for_mapping):   # ADEL
     list_tempo = onto_elems_for_mapping
     biggest_rate = list_tempo[0]['rate_compare']
     a, b = check_onto_sim_rate(list_tempo, 1)
+    tag = None
 
     if a:  # if we have rate = 1 or many, we take the biggest n-gram
         c, d = check_biggest_ngram_onto(b)
